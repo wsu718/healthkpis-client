@@ -1,15 +1,15 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline'
+// import Header from 
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          HealthKPIs
-        </p>
-      </header>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      {/* <Header /> */}
+    </React.Fragment>
   );
 }
 
