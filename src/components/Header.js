@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         background: '#ffffff'
+    },
+    paper: {
+        marginTop: theme.spacing(8)
     }
 
 }));
