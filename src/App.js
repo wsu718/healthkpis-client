@@ -1,6 +1,6 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
-// import Header from 
+import Header from './components/Header'
 import './App.css';
 
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <Header /> */}
+      <Header />
     </React.Fragment>
   );
 }
