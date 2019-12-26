@@ -1,22 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Header from './components/Header';
-import LogSleep from './components/LogSleep';
-
+import logo from './logo.svg';
 import './App.css';
-
 
 function App() {
   return (
-    <Router>
-      <React.Fragment>
-        <CssBaseline />
-        <Header />
-        <Route exact path='/' render={LogSleep} />
-      </React.Fragment>
-    </Router>
-
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
