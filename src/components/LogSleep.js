@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addSleep } from '../actions/sleepActions';
 
 import SleepData from './SleepData';
-import { sleepReducer } from '../reducers/sleepReducer';
+
 
 
 const LogSleep = props => {
@@ -12,18 +12,19 @@ const LogSleep = props => {
         duration: null,
         score: null,
         bedtime: null,
-        date: 101020
+        date: new Date().toLocaleDateString()
+        // Date will be handled by the server eventually
     });
 
     const handleChanges = e => {
-        // console.log(e.target.value)
         setSleepText({
             ...sleepText,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.type === 'number' ? +e.target.value : e.target.value,
         });
     };
 
     // console.log(sleepText);
+
 
 
     const handleSubmit = e => {
@@ -42,7 +43,7 @@ const LogSleep = props => {
                 <label>
                     Sleep duration
                     <input
-                        type='text'
+                        type='number'
                         name='duration'
                         onChange={handleChanges}
                     />
@@ -51,7 +52,7 @@ const LogSleep = props => {
                 <label>
                     Sleep score
                     <input
-                        type='text'
+                        type='number'
                         name='score'
                         onChange={handleChanges}
                     />
@@ -60,7 +61,7 @@ const LogSleep = props => {
                 <label>
                     Bedtime
                     <input
-                        type='text'
+                        type='number'
                         name='bedtime'
                         onChange={handleChanges}
                     />
@@ -74,9 +75,7 @@ const LogSleep = props => {
             <section>
                 <SleepData sleepEntries={props.sleepEntries} />
 
-                {props.sleepEntries.map(i => (
-                    <p>{i.duration}</p>
-                ))}
+
             </section>
         </main>
     )

@@ -6,7 +6,7 @@ const initialState = {
             duration: 6.45,
             score: 5,
             bedtime: 10.25,
-            date: 101020
+            date: '12/26/2019'
         }
     ]
 }
