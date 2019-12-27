@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
+import logger from 'redux-logger';
+
 import { Provider } from 'react-redux';
 import { sleepReducer } from './reducers/sleepReducer';
 
@@ -12,7 +14,9 @@ import 'normalize.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(sleepReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(sleepReducer, composeEnhancers(applyMiddleware(logger)));
 
 ReactDOM.render(
     <Router>
