@@ -1,32 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LogSleep = () => {
+
+    const [sleepText, setSleepText] = useState({
+        duration: null,
+        score: null,
+        bedtime: null
+    });
+
+    const handleChanges = e => {
+        setSleepText({
+            ...sleepText,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        return null
+    };
+
     return (
         <main>
             <h2>
                 Log sleep
             </h2>
-            <form>
-                <p>
-                    02/20/20
-                </p>
 
+            <form>
                 <label>
                     Sleep duration
-                    <input />
+                    <input
+                        type='text'
+                        name='duration'
+                        onChange={handleChanges}
+                    />
                 </label>
 
                 <label>
                     Sleep score
-                    <input />
+                    <input
+                        type='text'
+                        name='score'
+                        onChange={handleChanges}
+                    />
                 </label>
 
                 <label>
                     Bedtime
-                    <input />
+                    <input
+                        type='text'
+                        name='bedtime'
+                        onChange={handleChanges}
+                    />
                 </label>
 
-                <button>
+                <button onSubmit={handleSubmit}>
                     Log sleep
                 </button>
             </form>
