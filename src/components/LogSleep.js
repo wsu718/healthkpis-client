@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addSleep } from '../actions/sleepActions';
 
-const LogSleep = () => {
+import SleepData from './SleepData';
+import { sleepReducer } from '../reducers/sleepReducer';
+
+
+const LogSleep = props => {
 
     const [sleepText, setSleepText] = useState({
         duration: null,
         score: null,
-        bedtime: null
+        bedtime: null,
+        date: 101020
     });
 
     const handleChanges = e => {
@@ -21,9 +28,11 @@ const LogSleep = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        props.addSleep(sleepText);
     };
 
     return (
+
         <main>
             <h2>
                 Log sleep
@@ -61,9 +70,24 @@ const LogSleep = () => {
                     Log sleep
                 </button>
             </form>
-        </main>
 
+            <section>
+                <SleepData sleepEntries={props.sleepEntries} />
+
+                {props.sleepEntries.map(i => (
+                    <p>{i.duration}</p>
+                ))}
+            </section>
+        </main>
     )
 }
 
-export default LogSleep;
+const mapStateToProps = state => {
+    return {
+        addSleep: addSleep,
+        sleepEntries: state.sleepEntries
+    }
+
+}
+
+export default connect(mapStateToProps, { addSleep })(LogSleep);
