@@ -9,15 +9,18 @@ const LogSleep = () => {
     });
 
     const handleChanges = e => {
+        // console.log(e.target.value)
         setSleepText({
             ...sleepText,
             [e.target.name]: e.target.value,
         });
     };
 
+    // console.log(sleepText);
+
+
     const handleSubmit = e => {
-        e.preventDefault()
-        return null
+        e.preventDefault();
     };
 
     return (
@@ -54,7 +57,7 @@ const LogSleep = () => {
                     />
                 </label>
 
-                <button onSubmit={handleSubmit}>
+                <button onClick={handleSubmit}>
                     Log sleep
                 </button>
             </form>
