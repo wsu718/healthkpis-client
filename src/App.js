@@ -1,8 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Header from './components/Header';
-import Home from './components/Home';
+import LogSleep from './components/LogSleep';
+import SleepData from './components/SleepData';
+import SleepReview from './components/SleepReview';
 
 import './App.css';
 
@@ -11,13 +13,13 @@ function App() {
     <div className="App">
       <Header />
 
-      <Switch>
-        <Route path='/'>
-          <Home />
-        </Route>
-      </Switch>
 
-
+      <Route exact path='/' component={LogSleep} />
+      <Route path='/data' component={SleepData} />
+      <Route path='/sleepreview' render={props => {
+        return <SleepReview {...props} />
+      }}
+      />
     </div >
 
   );

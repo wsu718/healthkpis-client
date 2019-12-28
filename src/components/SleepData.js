@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const SleepData = props => {
     return (
@@ -8,19 +9,18 @@ const SleepData = props => {
                     <tr>
                         <th>Date</th>
                         <th>Duration</th>
-                        <th>Score</th>
+                        <th>Sleep score</th>
                         <th>Bedtime</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.sleepEntries.map((i, index) => (
+                    {props.sleepEntries.map((sleep, index) => (
                         <tr key={index}>
-                            <td>{i.date}</td>
-                            <td>{i.duration}</td>
-                            <td>{i.score}</td>
-                            <td>{i.bedtime}</td>
+                            <td>{sleep.date}</td>
+                            <td>{sleep.durationHours}hrs, {sleep.durationMinutes} min</td>
+                            <td>{sleep.score}</td>
+                            <td>{sleep.bedtimeHour}:{sleep.bedtimeMinutes} {sleep.bedtimeAMPM}</td>
                         </tr>
-
                     ))}
                 </tbody>
             </table>
@@ -29,4 +29,9 @@ const SleepData = props => {
     )
 }
 
-export default SleepData;
+const mapStateToProps = state => {
+    return {
+        sleepEntries: state.sleepEntries
+    }
+}
+export default connect(mapStateToProps, {})(SleepData);
