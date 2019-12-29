@@ -1,4 +1,4 @@
-import { ADD_SLEEP } from '../actions/sleepActions';
+import { ADD_SLEEP, ADD_EXPERIMENT } from '../actions/actions';
 
 const initialState = {
     sleepEntries: [
@@ -29,7 +29,16 @@ const initialState = {
             bedtimeMinutes: 0,
             bedtimeAMPM: 'PM'
         }
-
+    ],
+    experiments: [
+        {
+            date: '2019-12-29',
+            experiment: 'No alcohol'
+        },
+        {
+            date: '2019-12-20',
+            experiment: 'Sleep earlier'
+        }
     ]
 }
 
@@ -43,7 +52,16 @@ export const sleepReducer = (state = initialState, action) => {
                     ...state.sleepEntries,
                     action.payload
                 ]
-            }
+            };
+        case ADD_EXPERIMENT:
+            console.log(state, action);
+            return {
+                ...state,
+                experiments: [
+                    ...state.experiments,
+                    action.payload
+                ]
+            };
         default:
             return state;
     }

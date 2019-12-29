@@ -6,7 +6,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import logger from 'redux-logger';
 
 import { Provider } from 'react-redux';
-import { sleepReducer } from './reducers/sleepReducer';
+import { sleepReducer } from './reducers/reducer';
 
 import './index.css';
 import 'normalize.css'

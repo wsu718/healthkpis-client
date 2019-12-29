@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addSleep } from '../actions/sleepActions';
+import { addSleep } from '../actions/actions';
 
 const LogSleep = props => {
 
