@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SleepData = props => {
     return (
         <div>
+
             <table>
                 <thead>
                     <tr>
@@ -16,7 +18,7 @@ const SleepData = props => {
                 <tbody>
                     {props.sleepEntries.map((sleep, index) => (
                         <tr key={index}>
-                            <td>{sleep.date}</td>
+                            <td><Link to={`/sleep/${sleep.date}`}>{sleep.date}</Link></td>
                             <td>{sleep.durationHours}hrs, {sleep.durationMinutes} min</td>
                             <td>{sleep.score}</td>
                             <td>{sleep.bedtimeHour}:{sleep.bedtimeMinutes} {sleep.bedtimeAMPM}</td>
@@ -25,7 +27,7 @@ const SleepData = props => {
                 </tbody>
             </table>
 
-        </div>
+        </div >
     )
 }
 

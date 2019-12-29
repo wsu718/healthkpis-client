@@ -16,7 +16,7 @@ function App() {
 
       <Route exact path='/' component={LogSleep} />
       <Route path='/data' component={SleepData} />
-      <Route path='/sleepreview' render={props => {
+      <Route path='/sleep/:sleepDate' render={props => {
         return <SleepReview {...props} />
       }}
       />

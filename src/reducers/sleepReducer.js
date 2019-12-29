@@ -21,7 +21,7 @@ const initialState = {
             bedtimeAMPM: 'PM'
         },
         {
-            date: '2019-12-28',
+            date: '2019-12-29',
             durationHours: 4,
             durationMinutes: 10,
             score: 32,

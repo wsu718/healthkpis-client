@@ -26,12 +26,12 @@ const LogSleep = props => {
 
     // console.log(sleepText);
 
-
+    console.log(sleepText.date)
 
     const handleSubmit = e => {
         e.preventDefault();
         props.addSleep(sleepText);
-        props.history.push('/sleepreview')
+        props.history.push(`/sleep/${sleepText.date}`)
     };
 
     return (
