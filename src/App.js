@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
 import Header from './components/Header';
 import LogSleep from './components/LogSleep';
 import SleepData from './components/SleepData';
@@ -9,14 +8,15 @@ import Experiments from './components/Experiments';
 import CreateExperiment from './components/CreateExperiment';
 import ExperimentReview from './components/ExperimentReview';
 
+
+
 import './App.css';
 
 function App() {
   return (
+
     <div className="App">
       <Header />
-
-
       <Route exact path='/' component={LogSleep} />
       <Route path='/data' component={SleepData} />
       <Route path='/sleep/:sleepDate' render={props => {
@@ -29,7 +29,7 @@ function App() {
         return <ExperimentReview {...props} />
       }}
       />
-    </div >
+    </div>
 
   );
 }

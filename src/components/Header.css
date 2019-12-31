@@ -1,0 +1,48 @@
+header {
+    padding: 2% 5%;
+}
+
+header nav {
+    display: flex;
+}
+
+nav ul {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    align-items: center;
+
+}
+
+li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #303030;
+    font-weight: 400;
+}
+
+.logo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #F8396F;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+li button {
+    color: #fff;
+    padding: .75rem 1rem;
+    font-weight: 700;
+    border-radius: .25rem;
+    background-color: #3a8bce;
+    cursor: pointer;
+    border: 0;
+    font-size: 1rem;
+}
