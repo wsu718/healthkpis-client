@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const SleepData = props => {
+
+
+
     return (
         <div>
+            <h2>Your sleep data</h2>
 
-            <table>
+            <table className="datatable">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -18,10 +22,11 @@ const SleepData = props => {
                 <tbody>
                     {props.sleepEntries.map((sleep, index) => (
                         <tr key={index}>
-                            <td><Link to={`/sleep/${sleep.date}`}>{sleep.date}</Link></td>
-                            <td>{sleep.durationHours}hrs, {sleep.durationMinutes} min</td>
+                            <td><Link to={`/sleep/${sleep.date}`}>{sleep.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
+                            <td>{sleep.durationHours} hrs, {sleep.durationMinutes} min</td>
                             <td>{sleep.score}</td>
-                            <td>{sleep.bedtimeHour}:{sleep.bedtimeMinutes} {sleep.bedtimeAMPM}</td>
+                            <td>{sleep.bedtimeHour}:{sleep.bedtimeMinutes < 10 ? `0${sleep.bedtimeMinutes}` : sleep.bedtimeMinutes} {sleep.bedtimeAMPM}</td>
+                            {/* Ternary adds a 0 if bedtime minutes is a single integer, otherwise it would read "10:0 PM" */}
                         </tr>
                     ))}
                 </tbody>
