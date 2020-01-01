@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 const Experiments = props => {
     return (
         <div>
-            <h2><Link to="createexperiment">Create experiment</Link></h2>
+            <h2>Your experiments</h2>
 
-            <table>
+            <table className="datatable">
                 <thead>
                     <tr>
-                        <th>Status</th>
                         <th>Start date</th>
                         <th>Experiment</th>
                     </tr>
@@ -18,14 +17,14 @@ const Experiments = props => {
                 <tbody>
                     {props.experiments.map((experiment, index) => (
                         <tr key={index}>
-                            <td><Link to={`/experiment/${experiment.date}`}>{experiment.date}</Link></td>
-                            <td></td>
-                            <td>{experiment.date}</td>
+                            <td><Link to={`/experiment/${experiment.date}`}>{experiment.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
                             <td>{experiment.experiment}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+            <Link to="createexperiment"><button>Create new experiment</button></Link>
 
         </div >
     )

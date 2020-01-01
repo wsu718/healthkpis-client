@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addExperiment } from '../actions/actions';
+import styled from "styled-components";
 
 // Add conditional for if they have 7 days of data entered
+
+const Button = styled.button`
+margin-top: 20px;
+`
 
 const CreateExperiment = props => {
 
@@ -32,7 +37,8 @@ const CreateExperiment = props => {
             <h2>Create your experiment</h2>
             <p>Experiments are each one week long</p>
 
-            <form>
+            <form className="radioButtons">
+
                 <input
                     type="radio"
                     value="alcohol"
@@ -40,6 +46,7 @@ const CreateExperiment = props => {
                     onChange={handleSelect}
                     name="experiment"
                 />
+
                 <label htmlFor="alcohol">Drink no alcohol</label>
 
                 <input
@@ -69,11 +76,11 @@ const CreateExperiment = props => {
                 />
                 <label htmlFor="eat">Don't eat 3 hours before bed</label>
 
-                <button onClick={handleSubmit}>Create experiment</button>
+                <Button onClick={handleSubmit}>Create new experiment</Button>
 
 
             </form>
-        </div>
+        </div >
     )
 }
 

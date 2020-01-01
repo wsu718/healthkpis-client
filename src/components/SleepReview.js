@@ -29,13 +29,13 @@ const SleepReview = props => {
 
     return (
         <div>
-            <h2>Woohoo!</h2>
+            <h2>Data on your sleep</h2>
 
-            <p>Data on your sleep for {dayReviewing}</p>
+            <p>{dayReviewing.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</p>
 
             <h3>{/* Add awards */}</h3>
 
-            <table>
+            <table className="datatable">
                 <thead>
                     <tr>
                         <th></th>
@@ -47,8 +47,8 @@ const SleepReview = props => {
                 <tbody>
                     <tr>
                         <th>Sleep duration</th>
-                        <td>{thisDaySleepDurationHours}hrs, {thisDaySleepDurationMinutes}min </td>
-                        <td>{averageSleep}hrs, {averageSleepMinRemain}mins</td>
+                        <td>{thisDaySleepDurationHours} hrs, {thisDaySleepDurationMinutes} min </td>
+                        <td>{averageSleep} hrs, {averageSleepMinRemain} mins</td>
                         <td>
                             {changeDuration}%
                         </td>

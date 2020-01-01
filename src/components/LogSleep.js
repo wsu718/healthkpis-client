@@ -41,21 +41,22 @@ const LogSleep = props => {
                 Log sleep
             </h2>
 
-            <form>
-                <label htmlFor="date">
-                    Date
-                </label>
+            <form className="logsleepform">
+
                 <input
                     type="date"
                     name="date"
                     value={sleepText.date}
                     onChange={handleChanges}
+                    aria-label="Date"
+                    className="logsleepdate"
                 />
 
                 <fieldset>
                     <legend>
                         Sleep duration
                     </legend>
+                    <h3>Sleep duration</h3>
                     <input
                         type="number"
                         name="durationHours"
@@ -78,7 +79,7 @@ const LogSleep = props => {
                     </label>
                 </fieldset>
 
-                <label htmlFor="score">Sleep score</label>
+                <label htmlFor="score"><h3>Sleep score</h3></label>
 
                 <input
                     type="number"
@@ -90,7 +91,7 @@ const LogSleep = props => {
 
                 <fieldset>
                     <legend>Bedtime</legend>
-
+                    <h3>Bedtime</h3>
                     <input
                         type="number"
                         name="bedtimeHour"
@@ -99,7 +100,7 @@ const LogSleep = props => {
                         min="1"
                         max="12"
                     />
-
+                    <span>:</span>
 
                     <input
                         type="number"
