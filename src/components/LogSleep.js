@@ -48,6 +48,7 @@ const LogSleep = props => {
                     onChange={handleChanges}
                     aria-label="Date"
                     className="logsleepdate"
+
                 />
 
                 <fieldset>
@@ -58,6 +59,7 @@ const LogSleep = props => {
                     <input
                         type="number"
                         name="durationHours"
+                        id="durationHours"
                         min="0"
                         max="24"
                         onChange={handleChanges}
@@ -66,6 +68,7 @@ const LogSleep = props => {
                         hours
                     </label>
                     <input
+                        id="durationMinutes"
                         type="number"
                         name="durationMinutes"
                         min="0"
@@ -92,6 +95,7 @@ const LogSleep = props => {
                 <input
                     type="time"
                     name="bedtime"
+                    id="bedtime"
                     onChange={handleChanges}
                     required
 
