@@ -25,8 +25,7 @@ const SleepData = props => {
                             <td><Link to={`/sleep/${sleep.date}`}>{sleep.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
                             <td>{sleep.durationHours} hrs, {sleep.durationMinutes} min</td>
                             <td>{sleep.score}</td>
-                            <td>{sleep.bedtimeHour}:{sleep.bedtimeMinutes < 10 ? `0${sleep.bedtimeMinutes}` : sleep.bedtimeMinutes} {sleep.bedtimeAMPM}</td>
-                            {/* Ternary adds a 0 if bedtime minutes is a single integer, otherwise it would read "10:0 PM" */}
+                            <td>{sleep.bedtime}</td>
                         </tr>
                     ))}
                 </tbody>

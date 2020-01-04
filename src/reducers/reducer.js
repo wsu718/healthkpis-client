@@ -7,27 +7,21 @@ const initialState = {
             durationHours: 7,
             durationMinutes: 5,
             score: 76,
-            bedtimeHour: 8,
-            bedtimeMinutes: 45,
-            bedtimeAMPM: 'PM'
+            bedtime: "22:45"
         },
         {
             date: '2019-12-27',
             durationHours: 8,
             durationMinutes: 9,
             score: 64,
-            bedtimeHour: 10,
-            bedtimeMinutes: 12,
-            bedtimeAMPM: 'PM'
+            bedtime: "22:45"
         },
         {
             date: '2019-12-29',
             durationHours: 4,
             durationMinutes: 10,
             score: 32,
-            bedtimeHour: 10,
-            bedtimeMinutes: 0,
-            bedtimeAMPM: 'PM'
+            bedtime: "22:45"
         }
     ],
     experiments: [
