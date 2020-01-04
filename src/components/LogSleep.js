@@ -12,9 +12,7 @@ const LogSleep = props => {
         durationHours: 6,
         durationMinutes: 5,
         score: 76,
-        bedtimeHour: 10,
-        bedtimeMinutes: 45,
-        bedtimeAMPM: 'PM',
+        bedtime: "22:45"
     });
 
     const handleChanges = e => {
@@ -89,41 +87,21 @@ const LogSleep = props => {
                     onChange={handleChanges}
                 />
 
-                <fieldset>
-                    <legend>Bedtime</legend>
-                    <h3>Bedtime</h3>
-                    <input
-                        type="number"
-                        name="bedtimeHour"
-                        onChange={handleChanges}
-                        aria-label="Bedtime Hour"
-                        min="1"
-                        max="12"
-                    />
-                    <span>:</span>
+                <label htmlFor="bedtime"><h3>Bedtime</h3></label>
 
-                    <input
-                        type="number"
-                        name="bedtimeMinutes"
-                        onChange={handleChanges}
-                        aria-label="Bedtime Minutes"
-                        min="0"
-                        max="59"
-                    />
+                <input
+                    type="time"
+                    name="bedtime"
+                    onChange={handleChanges}
+                    required
 
-                    <select name="bedtimeAMPM" aria-label="PM or AM" onChange={handleChanges}>
-                        <option value="PM">PM</option>
-                        <option value="AM">AM</option>
-                    </select>
-
-
-                </fieldset>
-
-                <button onClick={handleSubmit}>
-                    Log sleep
+                />
+                <p>
+                    <button onClick={handleSubmit}>
+                        Log sleep
                 </button>
 
-
+                </p>
             </form>
 
 

@@ -141,7 +141,7 @@ legend {
   line-height: 1.5;
 }
 
-.logsleepform label {
+.logsleepform label[for="durationHours"], .logsleepform label[for="durationMinutes"] {
   margin: 0 10px;
 }
 
@@ -164,5 +164,5 @@ legend {
 }
 
 .logsleepform button {
-  margin-top: 40px;
+  margin-top: 15px;
 }
