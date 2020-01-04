@@ -1,5 +1,5 @@
 header {
-    padding: 0% 5%;
+    margin: 0 6em;
 }
 
 header nav {
@@ -17,7 +17,7 @@ nav ul {
 
 li a {
     text-decoration: none;
-    font-size: .9rem;
+    font-size: .9em;
     color: #303030;
     font-weight: 500;
 }
@@ -32,18 +32,18 @@ li a {
     text-decoration: none;
     color: #F8396F;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.3em;
     letter-spacing: 1px;
 }
 
 button {
     color: #fff;
-    padding: .75rem 1rem;
+    padding: .75rem 1em;
     font-weight: 500;
-    border-radius: .25rem;
+    border-radius: .25em;
     background-color: #3a8bce;
     cursor: pointer;
     border: 0;
-    font-size: .9rem;
+    font-size: .9em;
     text-decoration: none;
 }
