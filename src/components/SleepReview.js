@@ -5,7 +5,7 @@ const SleepReview = props => {
 
     const dayReviewing = props.match.params.sleepDate;
 
-    console.log(dayReviewing)
+    // console.log(dayReviewing)
 
     // Average Sleep Duration
     const totalDurationHours = props.sleepEntries.reduce((acc, val) => acc + val.durationHours, 0)
@@ -39,27 +39,29 @@ const SleepReview = props => {
                 <thead>
                     <tr>
                         <th></th>
+                        <th>Change</th>
                         <th>Last night</th>
                         <th>Average</th>
-                        <th>Change</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>Sleep duration</th>
+                        <td>{changeDuration}%</td>
                         <td>{thisDaySleepDurationHours} hrs, {thisDaySleepDurationMinutes} min </td>
                         <td>{averageSleep} hrs, {averageSleepMinRemain} mins</td>
-                        <td>
-                            {changeDuration}%
-                        </td>
-
-
                     </tr>
                     <tr>
                         <th>Sleep score</th>
+                        <td>{changeScore}%</td>
                         <td>{thisDaySleepScore}</td>
                         <td>{averageSleepScore}</td>
-                        <td>{changeScore}%</td>
+                    </tr>
+                    <tr>
+                        <th>Bedtime</th>
+                        <td>-20%</td>
+                        <td>22:59</td>
+                        <td>21:00</td>
                     </tr>
                 </tbody>
             </table>

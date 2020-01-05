@@ -27,15 +27,15 @@ const initialState = {
     experiments: [
         {
             date: '2019-12-29',
-            experiment: 'No alcohol'
+            experiment: `Don't eat 3 hours before bed`
         },
         {
             date: '2019-12-01',
-            experiment: 'No alcohol'
+            experiment: `Go to sleep one hour earlier`
         },
         {
             date: '2019-12-20',
-            experiment: 'Sleep earlier'
+            experiment: `Drink no alcohol`
         }
     ]
 }

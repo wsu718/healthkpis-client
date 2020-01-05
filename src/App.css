@@ -84,7 +84,6 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  text-transform: uppercase;
 }
 
 .radioButtons input[type="radio"] {

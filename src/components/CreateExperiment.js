@@ -41,7 +41,7 @@ const CreateExperiment = props => {
 
                 <input
                     type="radio"
-                    value="alcohol"
+                    value="Drink no alcohol"
                     id="alcohol"
                     onChange={handleSelect}
                     name="experiment"
@@ -51,7 +51,7 @@ const CreateExperiment = props => {
 
                 <input
                     type="radio"
-                    value="sleepearlier"
+                    value="Go to sleep one hour earlier"
                     id="sleepearlier"
                     onChange={handleSelect}
                     name="experiment"
@@ -60,7 +60,7 @@ const CreateExperiment = props => {
 
                 <input
                     type="radio"
-                    value="temp"
+                    value="Set temperature to 65 degrees"
                     id="temp"
                     onChange={handleSelect}
                     name="experiment"
@@ -69,7 +69,7 @@ const CreateExperiment = props => {
 
                 <input
                     type="radio"
-                    value="eat"
+                    value="Don't eat 3 hours before bed"
                     id="eat"
                     onChange={handleSelect}
                     name="experiment"
