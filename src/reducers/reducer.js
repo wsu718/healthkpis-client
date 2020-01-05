@@ -3,7 +3,7 @@ import { ADD_SLEEP, ADD_EXPERIMENT } from '../actions/actions';
 const initialState = {
     sleepEntries: [
         {
-            date: '2019-12-26',
+            date: '2019-12-12',
             durationHours: 7,
             durationMinutes: 5,
             score: 76,
@@ -27,6 +27,10 @@ const initialState = {
     experiments: [
         {
             date: '2019-12-29',
+            experiment: 'No alcohol'
+        },
+        {
+            date: '2019-12-01',
             experiment: 'No alcohol'
         },
         {
