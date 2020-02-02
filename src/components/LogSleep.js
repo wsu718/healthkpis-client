@@ -15,6 +15,8 @@ const LogSleep = props => {
         bedtime: "22:45"
     });
 
+    // Convert duration to seconds instead of hours and minutes
+
     const handleChanges = e => {
         setSleepText({
             ...sleepText,

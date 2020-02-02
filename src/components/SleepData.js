@@ -23,7 +23,7 @@ const SleepData = props => {
                     {props.sleepEntries.map((sleep, index) => (
                         <tr key={index}>
                             <td><Link to={`/sleep/${sleep.date}`}>{sleep.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
-                            <td>{sleep.durationHours} hrs, {sleep.durationMinutes} min</td>
+                            <td>{sleep.seconds} seconds</td>
                             <td>{sleep.score}</td>
                             <td>{sleep.bedtime}</td>
                         </tr>
