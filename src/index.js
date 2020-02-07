@@ -8,6 +8,8 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { sleepReducer } from './reducers/reducer';
 
+import thunk from 'redux-thunk';
+
 import './index.css';
 import 'normalize.css'
 
@@ -16,7 +18,7 @@ import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(sleepReducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(sleepReducer, composeEnhancers(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
     <Router>

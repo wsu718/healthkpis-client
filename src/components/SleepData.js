@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getSleep } from '../actions/actions';
 
 const SleepData = props => {
 
+    useEffect(() => {
+        props.getSleep();
+    },
+        [])
 
 
     return (
@@ -22,10 +27,10 @@ const SleepData = props => {
                 <tbody>
                     {props.sleepEntries.map((sleep, index) => (
                         <tr key={index}>
-                            <td><Link to={`/sleep/${sleep.date}`}>{sleep.date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
-                            <td>{sleep.seconds} seconds</td>
-                            <td>{sleep.score}</td>
-                            <td>{sleep.bedtime}</td>
+                            <td><Link to={`/sleep/${sleep.summary_date}`}>{sleep.summary_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
+                            <td>{sleep.duration}</td>
+                            <td>{sleep.score_total}</td>
+                            <td>{sleep.bedtime_start}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -40,4 +45,4 @@ const mapStateToProps = state => {
         sleepEntries: state.sleepEntries
     }
 }
-export default connect(mapStateToProps, {})(SleepData);
+export default connect(mapStateToProps, { getSleep })(SleepData);

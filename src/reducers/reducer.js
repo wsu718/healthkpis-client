@@ -1,31 +1,21 @@
-import { ADD_SLEEP, ADD_EXPERIMENT } from '../actions/actions';
+import {
+    GET_SLEEP_START,
+    GET_SLEEP_SUCCESS,
+    GET_SLEEP_FAILURE,
+    ADD_SLEEP_START,
+    ADD_SLEEP_SUCCESS,
+    ADD_SLEEP_FAILURE,
+    ADD_EXPERIMENT
+} from '../actions/actions';
 
 const initialState = {
     sleepEntries: [
-        {
-            date: '2019-12-12',
-            seconds: 0,
-            durationHours: 0,
-            durationMinutes: 0,
-            score: 76,
-            bedtime: "22:45"
-        },
-        {
-            date: '2019-12-27',
-            seconds: 0,
-            durationHours: 0,
-            durationMinutes: 0,
-            score: 64,
-            bedtime: "22:45"
-        },
-        {
-            date: '2019-01-07',
-            seconds: 0,
-            durationHours: 0,
-            durationMinutes: 0,
-            score: 32,
-            bedtime: "22:45"
-        }
+        // {
+        //     summary_date: '2019-12-12',
+        //     score_total: 76,
+        //     bedtime_start: '2019-12-11T02:13:19+02:00',
+        //     duration: 27945
+        // }
     ],
     experiments: [
         {
@@ -40,24 +30,64 @@ const initialState = {
             date: '2019-12-20',
             experiment: `Drink no alcohol`
         }
-    ]
+    ],
+    isTransmitting: null
 }
 
 export const sleepReducer = (state = initialState, action) => {
     console.log(state, action);
     switch (action.type) {
-        case ADD_SLEEP:
-            // const { durationHours, durationMinutes, ...rest } = action.payload
-
-            const newPayload = { ...action.payload, seconds: action.payload.durationHours * 3600 + action.payload.durationMinutes * 60 }
-            console.log(newPayload)
+        case GET_SLEEP_START:
+            return {
+                ...state,
+                isTransmitting: true
+            };
+        case GET_SLEEP_SUCCESS:
+            return {
+                ...state,
+                isTransmitting: false,
+                error: '',
+                sleepEntries:
+                    action.payload
+            };
+        case GET_SLEEP_FAILURE:
+            return {
+                ...state,
+                isTransmitting: false,
+                error: action.payload
+            };
+        case ADD_SLEEP_START:
+            return {
+                ...state,
+                isTransmitting: true
+            }
+        case ADD_SLEEP_SUCCESS:
             return {
                 ...state,
                 sleepEntries: [
                     ...state.sleepEntries,
-                    newPayload
+                    action.payload
                 ]
             };
+        case ADD_SLEEP_FAILURE:
+            return {
+                ...state,
+                isTransmitting: false,
+                error: action.payload
+            };
+
+        // case ADD_SLEEP:
+        //     // const { durationHours, durationMinutes, ...rest } = action.payload
+
+        //     const newPayload = { ...action.payload, seconds: action.payload.durationHours * 3600 + action.payload.durationMinutes * 60 }
+        //     console.log(newPayload)
+        //     return {
+        //         ...state,
+        //         sleepEntries: [
+        //             ...state.sleepEntries,
+        //             newPayload
+        //         ]
+        //     };
         case ADD_EXPERIMENT:
             console.log(state, action);
             return {
