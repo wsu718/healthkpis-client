@@ -12,7 +12,7 @@ const Header = () => {
                 </div>
                 <ul>
                     <li><NavLink to="/data">Sleep Data</NavLink></li>
-                    <li><NavLink to="/experiments">Experiments</NavLink></li>
+                    {/* <li><NavLink to="/experiments">Experiments</NavLink></li> */}
                     <li><NavLink to="/"><button>Log Sleep</button></NavLink></li>
                 </ul>
             </nav>
