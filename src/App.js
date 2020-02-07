@@ -1,24 +1,44 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Header from './components/Header';
+import { Route, Router, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import { useAuth0 } from "./react-auth0-spa";
+import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./components/Profile";
+import history from "./utils/history";
 import LogSleep from './components/LogSleep';
 import SleepData from './components/SleepData';
 import SleepReview from './components/SleepReview';
 import Experiments from './components/Experiments';
 import CreateExperiment from './components/CreateExperiment';
 import ExperimentReview from './components/ExperimentReview';
+import ExternalApi from "./views/ExternalApi";
 
 
 
 import './App.css';
 
 function App() {
+
+  const { loading } = useAuth0();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
 
     <div className="App">
-      <Header />
-      <div className="container">
-        <Route exact path='/' component={LogSleep} />
+      <Router history={history}>
+        <NavBar />
+        <div className="container">
+
+          <Switch>
+            <Route path="/" exact />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/external-api" component={ExternalApi} />
+          </Switch>
+
+          {/* <Route exact path='/' component={LogSleep} />
         <Route path='/data' component={SleepData} />
         <Route path='/sleep/:sleepDate' render={props => {
           return <SleepReview {...props} />
@@ -29,8 +49,9 @@ function App() {
         <Route path='/experiment/:experimentDate' render={props => {
           return <ExperimentReview {...props} />
         }}
-        />
-      </div>
+        /> */}
+        </div>
+      </Router>
     </div>
 
   );
