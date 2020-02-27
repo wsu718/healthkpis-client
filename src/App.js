@@ -36,20 +36,21 @@ function App() {
             <Route path="/" exact />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/external-api" component={ExternalApi} />
+            <PrivateRoute path='/logsleep' component={LogSleep} />
+            <PrivateRoute path='/data' component={SleepData} />
           </Switch>
 
-          {/* <Route exact path='/' component={LogSleep} />
-        <Route path='/data' component={SleepData} />
-        <Route path='/sleep/:sleepDate' render={props => {
+
+          {/* <Route path='/sleep/:sleepDate' render={props => {
           return <SleepReview {...props} />
         }}
-        />
-        <Route path='/experiments' component={Experiments} />
+        /> */}
+          {/* <Route path='/experiments' component={Experiments} />
         <Route path='/createexperiment' component={CreateExperiment} />
         <Route path='/experiment/:experimentDate' render={props => {
           return <ExperimentReview {...props} />
-        }}
-        /> */}
+        }} 
+          />*/}
         </div>
       </Router>
     </div>

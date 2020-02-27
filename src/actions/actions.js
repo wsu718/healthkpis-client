@@ -22,7 +22,7 @@ export const addExperiment = experiment => {
 export const getSleep = () => dispatch => {
     dispatch({ type: GET_SLEEP_START });
     axios
-        .get(`http://api.healthkpis.com/api/sleep`)
+        .get(`http://localhost:5000/api/sleep`)
         .then(res => {
             console.log(res)
             dispatch({ type: GET_SLEEP_SUCCESS, payload: res.data })
@@ -33,7 +33,7 @@ export const getSleep = () => dispatch => {
 export const addSleep = sleep => dispatch => {
     dispatch({ type: ADD_SLEEP_START });
     axios
-        .post(`http://api.healthkpis.com/api/sleep`, sleep)
+        .post(`http://localhost:5000/api/sleep`, sleep)
         .then(res => {
             console.log(res)
             dispatch({ type: ADD_SLEEP_SUCCESS, payload: sleep })
