@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addSleep } from '../actions/actions';
 import moment from 'moment';
+import { useAuth0 } from "../react-auth0-spa";
 
 const LogSleep = props => {
 
@@ -14,6 +15,9 @@ const LogSleep = props => {
         bedtime_start: undefined,
         duration: 0,
     });
+
+    const [showResult, setShowResult] = useState(false);
+    const { getTokenSilently } = useAuth0();
 
     console.log(sleepText)
 
@@ -56,12 +60,34 @@ const LogSleep = props => {
         })
     }
 
-    console.log(sleepText);
-
     const handleSubmit = e => {
         e.preventDefault();
-        props.addSleep(sleepText);
-        props.history.push(`/ sleep / ${sleepText.date}`)
+        console.log(sleepText)
+
+        const fetchData = async () => {
+            try {
+                const token = await getTokenSilently();
+
+                const response = await fetch("http://localhost:5000/api/sleep", {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sleepText),
+                });
+
+                const responseData = await response.json();
+                // const responseData = await response;
+
+                console.log(responseData);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+        // props.addSleep(sleepText);
+        // props.history.push(`/ sleep / ${sleepText.date}`)
     };
 
     return (
