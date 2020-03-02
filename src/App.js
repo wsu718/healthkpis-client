@@ -13,8 +13,6 @@ import CreateExperiment from './components/CreateExperiment';
 import ExperimentReview from './components/ExperimentReview';
 import ExternalApi from "./views/ExternalApi";
 
-
-
 import './App.css';
 
 function App() {
@@ -24,6 +22,8 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  // console.log(process.env.REACT_APP_API_URL)
 
   return (
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+
 // import { BrowserRouter as Router } from 'react-router-dom';
 
 import { applyMiddleware, createStore, compose } from 'redux';
@@ -24,6 +26,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(sleepReducer, composeEnhancers(applyMiddleware(thunk, logger)));
 
+//Auth0 code
 const onRedirectCallback = appState => {
     history.push(
         appState && appState.targetUrl

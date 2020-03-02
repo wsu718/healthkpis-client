@@ -60,32 +60,32 @@ const LogSleep = props => {
         })
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        console.log(sleepText)
+        console.log(process.env.REACT_APP_API_URL || 5000)
 
-        const fetchData = async () => {
-            try {
-                const token = await getTokenSilently();
+        // const submitData = async () => {
+        try {
+            const token = await getTokenSilently();
 
-                const response = await fetch("http://localhost:5000/api/sleep", {
-                    method: 'POST',
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(sleepText),
-                });
+            const response = await fetch(process.env.REACT_APP_API_URL, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(sleepText),
+            });
 
-                const responseData = await response.json();
-                // const responseData = await response;
+            const responseData = await response.json();
+            // const responseData = await response;
 
-                console.log(responseData);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
+            console.log(responseData);
+        } catch (error) {
+            console.error(error);
+        }
+        // };
+        // submitData();
         // props.addSleep(sleepText);
         // props.history.push(`/ sleep / ${sleepText.date}`)
     };
