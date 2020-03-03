@@ -5,7 +5,7 @@ import { getSleep } from '../actions/actions';
 import { useAuth0 } from "../react-auth0-spa";
 import moment from 'moment';
 
-const SleepData = props => {
+const HealthData = props => {
     const [showResult, setShowResult] = useState(false);
     const { getTokenSilently } = useAuth0();
     const [sleepEntries, setSleepEntries] = useState([])
@@ -80,4 +80,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getSleep })(SleepData);
+export default connect(mapStateToProps, { getSleep })(HealthData);

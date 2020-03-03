@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import history from "./utils/history";
 import LogSleep from './components/AddDay';
-import SleepData from './components/SleepData';
+import HealthData from './components/HealthData';
 import SleepReview from './components/SleepReview';
 import Experiments from './components/Experiments';
 import CreateExperiment from './components/CreateExperiment';
