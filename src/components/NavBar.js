@@ -26,7 +26,7 @@ const NavBar = () => {
                             <li><NavLink to="/data">Sleep Data</NavLink></li>
                             <li><NavLink to="/logsleep">Log Sleep</NavLink></li>
                             <li><Link to="/profile">Profile</Link></li>
-                            <li><Link to="/external-api">External API</Link></li>
+
                         </ul>
 
 
