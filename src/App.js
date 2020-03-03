@@ -5,7 +5,7 @@ import { useAuth0 } from "./react-auth0-spa";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import history from "./utils/history";
-import LogSleep from './components/LogSleep';
+import LogSleep from './components/AddDay';
 import SleepData from './components/SleepData';
 import SleepReview from './components/SleepReview';
 import Experiments from './components/Experiments';

@@ -23,18 +23,10 @@ const NavBar = () => {
 
                         <ul>
 
-                            <li><NavLink to="/data">Sleep Data</NavLink></li>
-                            <li><NavLink to="/logsleep">Log Sleep</NavLink></li>
-                            <li><Link to="/profile">Profile</Link></li>
-
+                            <li><NavLink to="/data">Data</NavLink></li>
+                            <li><NavLink to="/logsleep">Add Day</NavLink></li>
+                            {/* <li><Link to="/profile">Profile</Link></li> */}
                         </ul>
-
-
-
-
-
-
-
                     )}
 
                     {!isAuthenticated && (
