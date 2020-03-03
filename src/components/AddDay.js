@@ -222,10 +222,6 @@ const AddDay = props => {
                     onChange={handleChanges}
                 />
 
-
-
-
-
                 <p>
                     <button onClick={handleSubmit}>
                         Add Day

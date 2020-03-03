@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import history from "./utils/history";
 import AddDay from './components/AddDay';
 import HealthData from './components/HealthData';
+import LandingPage from './components/LandingPage';
 
 import './App.css';
 
@@ -28,7 +29,7 @@ function App() {
         <div className="container">
 
           <Switch>
-            <Route path="/" exact component={AddDay} />
+            <Route path="/" exact component={LandingPage} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path='/addday' component={AddDay} />
             <PrivateRoute path='/data' component={HealthData} />
