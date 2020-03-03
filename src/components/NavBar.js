@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAuth0 } from "../react-auth0-spa";
 
 
@@ -14,7 +14,7 @@ const NavBar = () => {
         <header>
             <nav>
                 <div className="logo">
-                    <NavLink to="/">HealthKPIs</NavLink>
+                    <NavLink to="/data">HealthKPIs</NavLink>
                 </div>
                 <div className="links">
 
@@ -24,7 +24,7 @@ const NavBar = () => {
                         <ul>
 
                             <li><NavLink to="/data">Data</NavLink></li>
-                            <li><NavLink to="/logsleep">Add Day</NavLink></li>
+                            <li><NavLink to="/addday">Add Day</NavLink></li>
                             {/* <li><Link to="/profile">Profile</Link></li> */}
                         </ul>
                     )}

@@ -5,13 +5,8 @@ import { useAuth0 } from "./react-auth0-spa";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import history from "./utils/history";
-import LogSleep from './components/AddDay';
+import AddDay from './components/AddDay';
 import HealthData from './components/HealthData';
-import SleepReview from './components/SleepReview';
-import Experiments from './components/Experiments';
-import CreateExperiment from './components/CreateExperiment';
-import ExperimentReview from './components/ExperimentReview';
-import ExternalApi from "./views/ExternalApi";
 
 import './App.css';
 
@@ -33,11 +28,10 @@ function App() {
         <div className="container">
 
           <Switch>
-            <Route path="/" exact />
+            <Route path="/" exact component={AddDay} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/external-api" component={ExternalApi} />
-            <PrivateRoute path='/logsleep' component={LogSleep} />
-            <PrivateRoute path='/data' component={SleepData} />
+            <PrivateRoute path='/addday' component={AddDay} />
+            <PrivateRoute path='/data' component={HealthData} />
           </Switch>
 
 

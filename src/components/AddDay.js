@@ -16,10 +16,10 @@ const AddDay = props => {
         duration: 0,
     });
 
-    const [showResult, setShowResult] = useState(false);
+    // const [showResult, setShowResult] = useState(false);
     const { getTokenSilently } = useAuth0();
 
-    console.log(day)
+    // console.log(day)
 
     // Convert duration to seconds instead of hours and minutes
 
@@ -109,7 +109,7 @@ const AddDay = props => {
         // props.addSleep(day);
 
         // redirect
-        // props.history.push(`/ sleep / ${day.date}`)
+        props.history.push(`/data`)
     };
 
     return (

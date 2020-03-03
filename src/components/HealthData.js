@@ -6,7 +6,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import moment from 'moment';
 
 const HealthData = props => {
-    const [showResult, setShowResult] = useState(false);
+    // const [showResult, setShowResult] = useState(false);
     const { getTokenSilently } = useAuth0();
     const [sleepEntries, setSleepEntries] = useState([])
 
@@ -24,7 +24,7 @@ const HealthData = props => {
                 const responseData = await response.json();
                 // const responseData = await response;
 
-                setShowResult(true);
+                // setShowResult(true);
                 // setApiMessage(responseData);
                 setSleepEntries(responseData)
             } catch (error) {
@@ -32,7 +32,7 @@ const HealthData = props => {
             }
         };
         fetchData();
-    }, [])
+    }, [getTokenSilently])
 
     return (
 
