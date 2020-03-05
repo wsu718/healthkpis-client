@@ -12,6 +12,7 @@ import { sleepReducer } from './reducers/reducer';
 
 import thunk from 'redux-thunk';
 
+import './assets/main.css'
 import './index.css';
 import 'normalize.css'
 
