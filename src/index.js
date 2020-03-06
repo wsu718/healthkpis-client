@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-// import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { applyMiddleware, createStore, compose } from 'redux';
 import logger from 'redux-logger';
@@ -44,12 +44,12 @@ ReactDOM.render(
         onRedirectCallback={onRedirectCallback}
         audience={config.audience}
     >
-        {/* <Router> */}
-        <Provider store={store}>
-            <App />
-        </Provider>
+        <BrowserRouter history={history}>
+            <Provider store={store}>
+                <App />
+            </Provider>
 
-        {/* </Router> */}
+        </BrowserRouter>
     </Auth0Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
