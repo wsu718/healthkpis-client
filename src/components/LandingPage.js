@@ -43,19 +43,14 @@ const LandingPage = () => {
                         <nav className="relative flex items-center justify-between sm:h-10 md:justify-center">
                             <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                                 <div className="flex items-center justify-between w-full md:w-auto">
-                                    <a href="#">
-                                        <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
-                                    </a>
+                                    <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
                                 </div>
                             </div>
 
                             {/* Login button */}
                             <div className="md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                                <span className="inline-flex rounded-md shadow" onClick={() => loginWithRedirect({})}>
-                                    <a className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white" >
-                                        Log in
-                    </a>
-
+                                <span className="inline-flex rounded-md shadow">
+                                    <button onClick={() => loginWithRedirect({})} className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white">Log in</button>
                                 </span>
                             </div>
                         </nav>
@@ -72,10 +67,11 @@ const LandingPage = () => {
                                 Track your most important health data every day. Create weekly experiments and compare the results.
                 </p>
                             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-                                <div className="rounded-md shadow" onClick={() => loginWithRedirect({})}>
-                                    <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600  md:py-4 md:text-lg md:px-10">
+                                <div className="rounded-md shadow" >
+                                    <button onClick={() => loginWithRedirect({})} className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600  md:py-4 md:text-lg md:px-10">Get started</button>
+                                    {/* <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600  md:py-4 md:text-lg md:px-10">
                                         Get started
-                    </a>
+                    </a> */}
                                 </div>
 
                             </div>
