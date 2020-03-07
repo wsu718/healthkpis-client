@@ -5,6 +5,8 @@ import { getSleep } from '../actions/actions';
 import { useAuth0 } from "../react-auth0-spa";
 import moment from 'moment';
 
+import './HealthData.css'
+
 const HealthData = props => {
     // const [showResult, setShowResult] = useState(false);
     const { getTokenSilently } = useAuth0();

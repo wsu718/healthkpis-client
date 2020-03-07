@@ -5,6 +5,8 @@ import moment from 'moment';
 import { useAuth0 } from "../react-auth0-spa";
 import NavBar from "./NavBar"
 
+import './AddDay.css';
+
 const AddDay = props => {
 
     // const today = new Date().toISOString().substr(0, 10);
@@ -225,7 +227,7 @@ const AddDay = props => {
                     />
 
                     <p>
-                        <button onClick={handleSubmit}>
+                        <button className='primary-button' onClick={handleSubmit}>
                             Add Day
                 </button>
 

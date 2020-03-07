@@ -21,7 +21,7 @@ function App() {
 
   return (
 
-    <div>
+    <div className='App'>
       <Switch>
         <Route exact path='/'>
           {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}

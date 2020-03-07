@@ -1,41 +1,38 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth0 } from "../react-auth0-spa";
-
+import Logo from '../assets/shapes-100.png';
 
 import './NavBar.css';
 
 const NavBar = () => {
 
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const { logout } = useAuth0();
 
 
     return (
-        <header>
-            <nav>
-                <div className="logo">
-                    <NavLink to="/data">HealthKPIs</NavLink>
+        <header className="mt-4">
+            <nav className="flex items-center justify-between">
+                <div className="flex items-center flex-1">
+                    <div className="flex items-center justify-between w-full md:w-auto">
+                        <NavLink to='/data'>
+                            <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
+                        </NavLink>
+                    </div>
                 </div>
+
                 <div className="links">
+                    <ul>
 
+                        <li><NavLink to="/data">Data</NavLink></li>
+                        <li><NavLink to="/addday">Add Day</NavLink></li>
+                        {/* <li><Link to="/profile">Profile</Link></li> */}
+                    </ul>
 
-                    {isAuthenticated && (
+                    <button className='primary-button' onClick={() => logout()}>Log out</button>
 
-                        <ul>
-
-                            <li><NavLink to="/data">Data</NavLink></li>
-                            <li><NavLink to="/addday">Add Day</NavLink></li>
-                            {/* <li><Link to="/profile">Profile</Link></li> */}
-                        </ul>
-                    )}
-
-                    {!isAuthenticated && (
-                        <button onClick={() => loginWithRedirect({})}>Log in</button>
-                    )}
-
-                    {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
                 </div>
-                {/*  */}
+
             </nav>
         </header >
     )
