@@ -1,0 +1,18 @@
+.land__tagline {
+    font-size: 4rem;
+    letter-spacing: -.025em;    
+    font-weight: 800;
+    color: #5850ec;
+}
+
+.land__tagline--black {
+    color: #161e2e;
+}
+
+.land__copy {
+font-size: 1.25rem;
+color: #6b7280;
+}
+
+
+  

@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import AddDay from './components/AddDay';
 import HealthData from './components/HealthData';
 import LandingPage from './components/LandingPage';
+import NavBar from './components/NavBar';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
   return (
 
     <div className='App'>
+      <NavBar />
       <Switch>
         <Route exact path='/'>
           {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}

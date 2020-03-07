@@ -7,32 +7,35 @@ import './NavBar.css';
 
 const NavBar = () => {
 
-    const { logout } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
 
     return (
-        <header className="mt-4">
-            <nav className="flex items-center justify-between">
-                <div className="flex items-center flex-1">
-                    <div className="flex items-center justify-between w-full md:w-auto">
-                        <NavLink to='/data'>
-                            <img className="h-8 w-auto sm:h-10" src={Logo} alt="" />
-                        </NavLink>
-                    </div>
-                </div>
+        <header>
+            <nav className='top-nav'>
+                <div className='top-nav__primary-nav' >
+                    <NavLink to="/data">
+                        <img src={Logo} className='top-nav__logo' alt='HeathKPIs' />
+                    </NavLink>
 
-                <div className="links">
-                    <ul>
-
-                        <li><NavLink to="/data">Data</NavLink></li>
-                        <li><NavLink to="/addday">Add Day</NavLink></li>
-                        {/* <li><Link to="/profile">Profile</Link></li> */}
-                    </ul>
-
-                    <button className='primary-button' onClick={() => logout()}>Log out</button>
+                    {isAuthenticated && (
+                        <ul className="top-nav__ul">
+                            <li className='top-nav__li'><NavLink to="/data" className='top-nav__a'>Data</NavLink></li>
+                            <li className='top-nav__li'><NavLink to="/addday" className='top-nav__a'>Add Day</NavLink></li>
+                        </ul>
+                    )}
 
                 </div>
 
+                <div className='top-nav__account'>
+
+                    {!isAuthenticated && (
+                        <button className='primary-button' onClick={() => loginWithRedirect({})}>Log in</button>
+                    )}
+
+                    {isAuthenticated && <button className='primary-button' onClick={() => logout()}>Log out</button>}
+                </div>
+                {/*  */}
             </nav>
         </header >
     )

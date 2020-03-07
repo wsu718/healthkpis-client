@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { addSleep } from '../actions/actions';
 import moment from 'moment';
 import { useAuth0 } from "../react-auth0-spa";
-import NavBar from "./NavBar"
 
 import './AddDay.css';
 
@@ -117,7 +116,7 @@ const AddDay = props => {
 
     return (
         <div>
-            <NavBar />
+
             <main>
                 <h2>
                     Add day
