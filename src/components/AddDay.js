@@ -124,119 +124,152 @@ const AddDay = props => {
 
                 <form className="adddayform">
 
-                    <input
-                        type="date"
-                        name="summary_date"
-                        value={day.summary_date}
-                        onChange={handleDateChanges}
-                        aria-label="Date"
-                        className="adddaydate"
+                    <div className='form__input'>
+                        <label htmlFor="date">Date</label>
+                        <input
+                            type="date"
+                            name="summary_date"
+                            value={day.summary_date}
+                            onChange={handleDateChanges}
+                            aria-label="Date"
+                            className="adddaydate"
 
-                    />
+                        />
 
-                    <label htmlFor="score"><h3>Sleep score</h3></label>
+                    </div>
 
-                    <input
-                        type="number"
-                        name="score_total"
-                        min="0"
-                        max="100"
-                        onChange={handleScoreChanges}
-                    />
+                    <div className='form__input'>
+                        <label htmlFor="score">Sleep score</label>
 
-                    <label htmlFor="bedtime"><h3>Bedtime</h3></label>
-
-                    <input
-                        type="time"
-                        name="bedtime_start"
-                        id="bedtime"
-                        onChange={handleBedtimeChanges}
-                        required
-
-                    />
-
-                    <fieldset>
-                        <legend>
-                            Sleep duration
-                    </legend>
-                        <h3>Sleep duration</h3>
                         <input
                             type="number"
-                            name="durationHours"
-                            id="durationHours"
+                            name="score_total"
                             min="0"
-                            max="24"
-                            onChange={handleDurationChanges}
+                            max="100"
+                            onChange={handleScoreChanges}
                         />
-                        <label htmlFor="durationHours">
-                            hours
-                    </label>
+                    </div>
+
+                    <div className='form__input'>
+                        <label htmlFor="bedtime">Bedtime</label>
+
                         <input
-                            id="durationMinutes"
-                            type="number"
-                            name="durationMinutes"
-                            min="0"
-                            max="59"
-                            onChange={handleDurationChanges}
+                            type="time"
+                            name="bedtime_start"
+                            id="bedtime"
+                            onChange={handleBedtimeChanges}
+                            required
+
                         />
-                        <label htmlFor="durationMinutes">
-                            minutes
+                    </div>
+
+                    <div className='form__input'>
+
+                        <label >Sleep duration</label>
+
+                        <div className="duration-container">
+
+                            <div>
+                                <input
+                                    type="number"
+                                    name="durationHours"
+                                    id="durationHours"
+                                    min="0"
+                                    max="24"
+                                    onChange={handleDurationChanges}
+                                    aria-label="Duration Hours"
+                                />
+
+                                <label htmlFor="durationHours">
+                                    hrs
+                         </label>
+
+                            </div>
+
+                            <div>
+                                <input
+                                    id="durationMinutes"
+                                    type="number"
+                                    name="durationMinutes"
+                                    min="0"
+                                    max="59"
+                                    onChange={handleDurationChanges}
+                                    aria-label="Duration Minutes"
+                                />
+                                <label htmlFor="durationMinutes">
+                                    mins
                     </label>
-                    </fieldset>
+                            </div>
+                        </div>
 
-                    <label htmlFor="readiness"><h3>Readiness</h3></label>
+                    </div>
 
-                    <input
-                        type="number"
-                        name="readiness"
-                        id="readiness"
-                        min="0"
-                        max="100"
-                        onChange={handleChanges}
-                    />
+                    <div className='form__input'>
+                        <label htmlFor="readiness">Readiness</label>
 
-                    <label htmlFor="hrv"><h3>HRV avg</h3></label>
+                        <input
+                            type="number"
+                            name="readiness"
+                            id="readiness"
+                            min="0"
+                            max="100"
+                            onChange={handleChanges}
+                        />
 
-                    <input
-                        type="number"
-                        name="hrv"
-                        min="0"
-                        max="100"
-                        onChange={handleChanges}
-                    />
+                    </div>
 
-                    <label htmlFor="rhr"><h3>RHR avg</h3></label>
+                    <div className='form__input'>
 
-                    <input
-                        type="number"
-                        name="rhr"
-                        min="0"
-                        max="100"
-                        onChange={handleChanges}
-                    />
+                        <label htmlFor="hrv">HRV avg</label>
 
-                    <label htmlFor="weight"><h3>Weight (lbs)</h3></label>
+                        <input
+                            type="number"
+                            name="hrv"
+                            min="0"
+                            max="100"
+                            onChange={handleChanges}
+                        />
+                    </div>
 
-                    <input
-                        type="number"
-                        name="weight"
-                        min="0"
-                        max="500"
-                        onChange={handleChanges}
-                    />
+                    <div className='form__input'>
 
-                    <p>
-                        <button className='primary-button' onClick={handleSubmit}>
-                            Add Day
+                        <label htmlFor="rhr">RHR avg</label>
+
+                        <input
+                            type="number"
+                            name="rhr"
+                            min="0"
+                            max="100"
+                            onChange={handleChanges}
+                        />
+                    </div>
+                    <div className='form__input'>
+
+                        <label htmlFor="weight">Weight (lbs)</label>
+
+                        <input
+                            type="number"
+                            name="weight"
+                            min="0"
+                            max="500"
+                            onChange={handleChanges}
+                        />
+                    </div>
+
+                    <div>
+                        <p>
+                            <button className='primary-button' onClick={handleSubmit}>
+                                Add Day
                 </button>
+                        </p>
+                    </div>
 
-                    </p>
                 </form>
 
 
             </main >
 
-        </div>
+        </div >
     )
 }
 

@@ -15,14 +15,16 @@
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 1.875rem;
+  color: #161e2e;
 }
 
 
 
 /* App */
 .App {
-  text-align: center;
+  
   max-width: 750px;
   margin: auto;
   

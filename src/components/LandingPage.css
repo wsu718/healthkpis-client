@@ -1,3 +1,7 @@
+.land {
+    text-align: center;
+}
+
 .land__tagline {
     font-size: 4rem;
     letter-spacing: -.025em;    
