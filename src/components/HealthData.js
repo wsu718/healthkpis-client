@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getSleep } from '../actions/actions';
 import { useAuth0 } from "../react-auth0-spa";
 import moment from 'moment';
 
 import './HealthData.css'
 
 const HealthData = props => {
-    // const [showResult, setShowResult] = useState(false);
     const { getTokenSilently } = useAuth0();
     const [sleepEntries, setSleepEntries] = useState([])
 
@@ -24,10 +21,6 @@ const HealthData = props => {
                 });
 
                 const responseData = await response.json();
-                // const responseData = await response;
-
-                // setShowResult(true);
-                // setApiMessage(responseData);
                 setSleepEntries(responseData)
             } catch (error) {
                 console.error(error);
@@ -76,10 +69,4 @@ const HealthData = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        // sleepEntries: state.sleepEntries
-    }
-}
-
-export default connect(mapStateToProps, { getSleep })(HealthData);
+export default HealthData;

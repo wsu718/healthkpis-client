@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addSleep } from '../actions/actions';
 import moment from 'moment';
 import { useAuth0 } from "../react-auth0-spa";
 
@@ -273,11 +271,4 @@ const AddDay = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        addSleep: addSleep,
-        sleepEntries: state.sleepEntries
-    }
-}
-
-export default connect(mapStateToProps, { addSleep })(AddDay);
+export default AddDay;
