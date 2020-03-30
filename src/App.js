@@ -25,7 +25,7 @@ function App() {
 
     <div className='App'>
       <Router history={history}>
-        {/* <NavBar /> */}
+        <NavBar />
         <Switch>
           <Route exact path='/'>
             {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}
