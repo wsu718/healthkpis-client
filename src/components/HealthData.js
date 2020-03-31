@@ -55,7 +55,8 @@ const HealthData = props => {
                             {/* <td>{sleep.duration}</td> */}
                             {/* Moment works with milliseconds by default, so multiply what we store as seconds by 1000 */}
                             <td>{moment.duration(sleep.duration * 1000).hours()}h {moment.duration(sleep.duration * 1000).minutes()}m</td>
-                            <td>{moment(sleep.bedtime_start).format('hh[:]mm A')}</td>
+
+                            <td>{moment(sleep.bedtime_start, ["HH:mm"]).format('hh[:]mm A')}</td>
                             <td>{sleep.readiness}</td>
                             <td>{sleep.hrv}</td>
                             <td>{sleep.rhr}</td>

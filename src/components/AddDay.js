@@ -32,20 +32,6 @@ const AddDay = props => {
         history.push("/data");
     }
 
-    // const handleDurationChanges = e => {
-    //     if (e.target.name === 'durationHours') {
-    //         setDurationSum({
-    //             ...durationSum,
-    //             duration: durationSum.duration + (e.target.value * 3600)
-    //         })
-    //     } else if (e.target.name === 'durationMinutes') {
-    //         setDurationSum({
-    //             ...durationSum,
-    //             duration: durationSum.duration + (e.target.value * 60)
-    //         })
-    //     }
-    // }
-
     const handleDurationChanges = e => {
         if (e.target.name === 'durationHours') {
             setDurationHours(e.target.value * 3600)
