@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
 import { useForm } from 'react-hook-form';
 import { useHistory } from "react-router-dom";
@@ -7,10 +7,13 @@ import './AddDay.css';
 
 const AddDay = props => {
     const { register, handleSubmit } = useForm();
+    const [durationHours, setDurationHours] = useState(0);
+    const [durationMinutes, setDurationMinutes] = useState(0);
     const { getTokenSilently } = useAuth0();
     let history = useHistory();
 
     const onSubmit = async data => {
+        data.duration = durationHours + durationMinutes;
         try {
             const token = await getTokenSilently();
             const response = await fetch(process.env.REACT_APP_API_URL, {
@@ -27,6 +30,28 @@ const AddDay = props => {
             console.error(error);
         }
         history.push("/data");
+    }
+
+    // const handleDurationChanges = e => {
+    //     if (e.target.name === 'durationHours') {
+    //         setDurationSum({
+    //             ...durationSum,
+    //             duration: durationSum.duration + (e.target.value * 3600)
+    //         })
+    //     } else if (e.target.name === 'durationMinutes') {
+    //         setDurationSum({
+    //             ...durationSum,
+    //             duration: durationSum.duration + (e.target.value * 60)
+    //         })
+    //     }
+    // }
+
+    const handleDurationChanges = e => {
+        if (e.target.name === 'durationHours') {
+            setDurationHours(e.target.value * 3600)
+        } else if (e.target.name === 'durationMinutes') {
+            setDurationMinutes(e.target.value * 60)
+        }
     }
 
     return (
@@ -76,7 +101,7 @@ const AddDay = props => {
                                         min="0"
                                         max="24"
                                         aria-label="Duration Hours"
-                                        ref={register}
+                                        onChange={handleDurationChanges}
                                     />
                                     <label htmlFor="durationHours">hrs</label>
                                 </div>
@@ -88,7 +113,7 @@ const AddDay = props => {
                                         min="0"
                                         max="59"
                                         aria-label="Duration Minutes"
-                                        ref={register}
+                                        onChange={handleDurationChanges}
                                     />
                                     <label htmlFor="durationMinutes">
                                         mins
