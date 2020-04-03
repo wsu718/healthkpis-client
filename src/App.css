@@ -35,4 +35,8 @@ h2 {
   width: auto;
 }
 
-
+.error-message {
+  font-size: 0.875rem;
+  color: rgb(229, 62, 62);
+  margin-top: 0.5rem;
+}
