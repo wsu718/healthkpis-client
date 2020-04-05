@@ -7,21 +7,21 @@ import './HealthData.css'
 
 const HealthData = props => {
     const { getTokenSilently } = useAuth0();
-    const [sleepEntries, setSleepEntries] = useState([])
+    const [healthEntries, setHealthEntries] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const token = await getTokenSilently();
 
-                const response = await fetch(process.env.REACT_APP_API_URL, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
 
                 const responseData = await response.json();
-                setSleepEntries(responseData)
+                setHealthEntries(responseData)
             } catch (error) {
                 console.error(error);
             }
@@ -48,19 +48,19 @@ const HealthData = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sleepEntries.map((sleep, index) => (
+                    {healthEntries.map((day, index) => (
                         <tr key={index}>
-                            <td><Link to={`/sleep/${sleep.summary_date}`}>{sleep.summary_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
-                            <td>{sleep.score_total}</td>
+                            <td><Link to={`/day/${day.summary_date}`}>{day.summary_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
+                            <td>{day.score_total}</td>
                             {/* <td>{sleep.duration}</td> */}
                             {/* Moment works with milliseconds by default, so multiply what we store as seconds by 1000 */}
-                            <td>{moment.duration(sleep.duration * 1000).hours()}h {moment.duration(sleep.duration * 1000).minutes()}m</td>
+                            <td>{moment.duration(day.duration * 1000).hours()}h {moment.duration(day.duration * 1000).minutes()}m</td>
 
-                            <td>{moment(sleep.bedtime_start, ["HH:mm"]).format('hh[:]mm A')}</td>
-                            <td>{sleep.readiness}</td>
-                            <td>{sleep.hrv}</td>
-                            <td>{sleep.rhr}</td>
-                            <td>{sleep.weight}</td>
+                            <td>{moment(day.bedtime_start, ["HH:mm"]).format('hh[:]mm A')}</td>
+                            <td>{day.readiness}</td>
+                            <td>{day.hrv}</td>
+                            <td>{day.rhr}</td>
+                            <td>{day.weight}</td>
                         </tr>
                     ))}
                 </tbody>

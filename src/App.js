@@ -7,6 +7,8 @@ import AddDay from './components/AddDay';
 import HealthData from './components/HealthData';
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
+import ViewDay from './components/ViewDay';
+
 import history from "./utils/history";
 
 import './App.css';
@@ -34,6 +36,7 @@ function App() {
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/addday' component={AddDay} />
           <PrivateRoute path='/data' component={HealthData} />
+          <PrivateRoute path='/day/:date' component={ViewDay} />
         </Switch>
       </Router>
     </div >
