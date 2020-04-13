@@ -5,8 +5,9 @@ import moment from 'moment';
 
 import './HealthData.css'
 
-const HealthData = props => {
+const HealthData = () => {
     const { getTokenSilently } = useAuth0();
+
     const [healthEntries, setHealthEntries] = useState([])
 
     useEffect(() => {
@@ -28,6 +29,10 @@ const HealthData = props => {
         };
         fetchData();
     }, [getTokenSilently])
+
+    const addDataToState = data => {
+        setHealthEntries(data)
+    }
 
     return (
 
@@ -65,8 +70,7 @@ const HealthData = props => {
                     ))}
                 </tbody>
             </table>
-
-        </div >
+        </div>
     )
 }
 

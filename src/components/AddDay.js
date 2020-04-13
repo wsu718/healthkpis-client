@@ -25,7 +25,8 @@ const AddDay = props => {
                 body: JSON.stringify(data),
             });
             const responseData = await response.json();
-            console.log(responseData);
+            // console.log(responseData);
+
         } catch (error) {
             console.error(error);
         }
