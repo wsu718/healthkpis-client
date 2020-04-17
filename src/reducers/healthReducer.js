@@ -1,13 +1,19 @@
 import {
     GET_HEALTH_START,
     GET_HEALTH_SUCCESS,
-    GET_HEALTH_FAILURE
+    GET_HEALTH_FAILURE,
+    GET_HEALTHBYDATE_START,
+    GET_HEALTHBYDATE_SUCCESS,
+    GET_HEALTHBYDATE_FAILURE,
+
 } from "../actions";
 
 const initialState = {
-    isHealthRetrieved: false,
+    isFetchingData: false,
+    isLoading: false,
     error: '',
-    data: [
+    healthByDate: {},
+    health: [
         {
             user_id: "auth0|5e3d8e29d82dd00e84f9bd52",
             summary_date: "2019-12-12",
@@ -28,19 +34,37 @@ const healthReducer = (state = initialState, action) => {
         case GET_HEALTH_START:
             return {
                 ...state,
-                isHealthRetrieved: false
+                isFetchingData: false
             };
         case GET_HEALTH_SUCCESS:
             return {
                 ...state,
-                isHealthRetrieved: true,
+                isFetchingData: true,
                 error: '',
-                data: action.payload
+                health: action.payload
             }
         case GET_HEALTH_FAILURE:
             return {
                 ...state,
-                isHealthRetrieved: false,
+                isFetchingData: false,
+                error: action.payload
+            }
+        case GET_HEALTHBYDATE_START:
+            return {
+                ...state,
+                isFetchingData: false
+            };
+        case GET_HEALTHBYDATE_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: true,
+                error: '',
+                healthByDate: action.payload[0]
+            }
+        case GET_HEALTHBYDATE_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
                 error: action.payload
             }
         default:

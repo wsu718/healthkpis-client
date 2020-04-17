@@ -8,9 +8,8 @@ import './HealthData.css'
 const HealthData = ({ health, getHealth }) => {
 
     useEffect(() => {
-        getHealth()
-    }, [getHealth]
-    )
+        getHealth();
+    }, [getHealth]);
 
     return (
 
@@ -55,7 +54,7 @@ const HealthData = ({ health, getHealth }) => {
 
 const mapStateToProps = state => {
     return {
-        health: state.health.data
+        health: state.healthReducer.health
     };
 };
 

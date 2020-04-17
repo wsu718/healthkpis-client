@@ -17,6 +17,8 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
         fn();
     }, [loading, isAuthenticated, loginWithRedirect, path]);
 
+    // This is Auth0 starter code. Removed because it is breaking the React Router update. 
+
     // const render = props =>
     //     isAuthenticated === true ? <Component {...props} /> : null;
 
