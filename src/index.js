@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import 'normalize.css'
+import 'normalize.css';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
 import history from './utils/history';
 
 // import auth0
@@ -19,9 +20,8 @@ import { rootReducer } from './reducers/index';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-console.log(rootReducer);
-
 // auth0 code
+
 const onRedirectCallback = appState => {
     history.push(
         appState && appState.targetUrl

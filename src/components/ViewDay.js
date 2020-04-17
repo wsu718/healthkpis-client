@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth0 } from '../react-auth0-spa';
+// import { useAuth0 } from '../react-auth0-spa';
 
 const ViewDay = props => {
-    const { getTokenSilently } = useAuth0();
+    // const { getTokenSilently } = useAuth0();
 
     let { date } = useParams();
 
-    const [healthData, setHealthData] = useState({});
+    // const [healthData, setHealthData] = useState({});
 
-    useEffect(() => {
-        const fetchData = async data => {
-            try {
-                const token = await getTokenSilently();
+    // useEffect(() => {
+    //     const fetchData = async data => {
+    //         try {
+    //             const token = await getTokenSilently();
 
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/${date}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+    //             const response = await fetch(`${process.env.REACT_APP_API_URL}/${date}`, {
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`
+    //                 }
+    //             });
 
-                const responseData = await response.json();
-                setHealthData(responseData[0]);
-            } catch (error) {
-                console.error(error)
-            }
-        };
-        fetchData();
+    //             const responseData = await response.json();
+    //             setHealthData(responseData[0]);
+    //         } catch (error) {
+    //             console.error(error)
+    //         }
+    //     };
+    //     fetchData();
 
-    }, [getTokenSilently, date])
+    // }, [getTokenSilently, date])
 
-    console.log(healthData.summary_date)
+    // console.log(healthData.summary_date)
 
     //     user_id: "auth0|5e3d8e29d82dd00e84f9bd52"
     // summary_date: "2019-12-12"
@@ -48,7 +48,7 @@ const ViewDay = props => {
                 {date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}
             </h2>
 
-            <div>
+            {/* <div>
                 <p>Sleep score</p>
                 <p>{healthData.score_total}</p>
             </div>
@@ -81,7 +81,7 @@ const ViewDay = props => {
             <div>
                 <p>Weight</p>
                 <p>{healthData.weight}</p>
-            </div>
+            </div> */}
 
         </div>
     )

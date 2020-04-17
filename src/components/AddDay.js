@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth0 } from '../react-auth0-spa';
+// import { useAuth0 } from '../react-auth0-spa';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
@@ -9,28 +9,28 @@ const AddDay = props => {
     const { register, handleSubmit, errors } = useForm();
     const [durationHours, setDurationHours] = useState(0);
     const [durationMinutes, setDurationMinutes] = useState(0);
-    const { getTokenSilently } = useAuth0();
+    // const { getTokenSilently } = useAuth0();
     let history = useHistory();
 
     const onSubmit = async data => {
-        data.duration = durationHours + durationMinutes;
-        try {
-            const token = await getTokenSilently();
-            const response = await fetch(process.env.REACT_APP_API_URL, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            const responseData = await response.json();
-            // console.log(responseData);
+        // data.duration = durationHours + durationMinutes;
+        // try {
+        //     const token = await getTokenSilently();
+        //     const response = await fetch(process.env.REACT_APP_API_URL, {
+        //         method: 'POST',
+        //         headers: {
+        //             Authorization: `Bearer ${token}`,
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(data),
+        //     });
+        //     const responseData = await response.json();
+        //     // console.log(responseData);
 
-        } catch (error) {
-            console.error(error);
-        }
-        history.push('/data');
+        // } catch (error) {
+        //     console.error(error);
+        // }
+        // history.push('/data');
     }
 
     const handleDurationChanges = e => {

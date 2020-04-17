@@ -1,38 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "../react-auth0-spa";
 import moment from 'moment';
-
+import { getHealth } from '../actions';
+import { connect } from 'react-redux';
 import './HealthData.css'
 
-const HealthData = () => {
-    const { getTokenSilently } = useAuth0();
-
-    const [healthEntries, setHealthEntries] = useState([])
+const HealthData = ({ health, getHealth }) => {
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const token = await getTokenSilently();
-
-                const response = await fetch(`${process.env.REACT_APP_API_URL}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                const responseData = await response.json();
-                setHealthEntries(responseData)
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
-    }, [getTokenSilently])
-
-    const addDataToState = data => {
-        setHealthEntries(data)
-    }
+        getHealth()
+    }, [getHealth]
+    )
 
     return (
 
@@ -53,12 +31,12 @@ const HealthData = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {healthEntries.map((day, index) => (
+
+                    {health.map((day, index) => (
                         <tr key={index}>
                             <td><Link to={`/day/${day.summary_date}`}>{day.summary_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
                             <td>{day.score_total}</td>
-                            {/* <td>{sleep.duration}</td> */}
-                            {/* Moment works with milliseconds by default, so multiply what we store as seconds by 1000 */}
+
                             <td>{moment.duration(day.duration * 1000).hours()}h {moment.duration(day.duration * 1000).minutes()}m</td>
 
                             <td>{moment(day.bedtime_start, ["HH:mm"]).format('hh[:]mm A')}</td>
@@ -68,10 +46,17 @@ const HealthData = () => {
                             <td>{day.weight}</td>
                         </tr>
                     ))}
+
                 </tbody>
             </table>
         </div>
     )
 }
 
-export default HealthData;
+const mapStateToProps = state => {
+    return {
+        health: state.health.data
+    };
+};
+
+export default connect(mapStateToProps, { getHealth })(HealthData);
