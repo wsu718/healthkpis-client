@@ -15,6 +15,7 @@ const initialState = {
     healthByDate: {},
     health: [
         {
+            id: '',
             user_id: "auth0|5e3d8e29d82dd00e84f9bd52",
             summary_date: "2019-12-12",
             score_total: 76,
@@ -59,7 +60,10 @@ const healthReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingData: true,
                 error: '',
-                healthByDate: action.payload[0]
+                health: [
+                    ...state.health,
+                    action.payload[0]
+                ]
             }
         case GET_HEALTHBYDATE_FAILURE:
             return {
