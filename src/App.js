@@ -13,8 +13,11 @@ import history from "./utils/history";
 
 import './App.css';
 
-function App() {
+function App(props) {
 
+  console.log(props)
+  // console.log(params)
+  // console.log(match.params)
   const { isAuthenticated, loading } = useAuth0();
 
   if (loading) {

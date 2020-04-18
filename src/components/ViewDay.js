@@ -1,33 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getHealthByDate } from '../actions'
+import { useSelector } from 'react-redux';
 
-const ViewDay = ({ health }) => {
+const ViewDay = () => {
     const { date } = useParams();
 
-    const [healthToday, setHealthToday] = useState({
-        id: '',
-        user_id: '',
-        summary_date: '',
-        score_total: '',
-        bedtime_start: '',
-        duration: '',
-        readiness: '',
-        hrv: '',
-        rhr: '',
-        weight: '',
-        updated: false
-    })
-
-
-    useEffect(() => {
-        const healthLookup = health.find(day => day.summary_date === date)
-        if (healthLookup) {
-            setHealthToday(healthLookup)
-        }
-
-    }, [date, health]);
+    // Replaces mapStateToProps and gives access to useParams hook inside component 
+    const health = useSelector(state => state.healthReducer.health.find(day => day.summary_date === date));
 
     return (
         <div>
@@ -35,55 +14,44 @@ const ViewDay = ({ health }) => {
                 {date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}
             </h2>
 
-            <h2>
-                {healthToday.updated === false ? <div>It appears there has been a mistake.</div> : <></>}
-            </h2>
-
             <div>
 
                 <p>Sleep score</p>
 
-                <p>{healthToday.score_total}</p>
+                <p>{health.score_total}</p>
             </div>
 
             <div>
                 <p>Duration</p>
-                <p>{healthToday.duration}</p>
+                <p>{health.duration}</p>
             </div>
-
             <div>
                 <p>Bedtime</p>
-                <p>{healthToday.bedtime_start}</p>
+                <p>{health.bedtime_start}</p>
             </div>
 
             <div>
                 <p>Readiness</p>
-                <p>{healthToday.readiness}</p>
+                <p>{health.readiness}</p>
             </div>
 
             <div>
                 <p>HRV</p>
-                <p>{healthToday.hrv}</p>
+                <p>{health.hrv}</p>
             </div>
 
             <div>
                 <p>RHR</p>
-                <p>{healthToday.rhr}</p>
+                <p>{health.rhr}</p>
             </div>
 
             <div>
                 <p>Weight</p>
-                <p>{healthToday.weight}</p>
+                <p>{health.weight}</p>
             </div>
 
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        health: state.healthReducer.health
-    }
-}
-
-export default connect(mapStateToProps, {})(ViewDay);
+export default ViewDay;
