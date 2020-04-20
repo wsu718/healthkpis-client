@@ -1,44 +1,19 @@
-import React, { useState } from 'react';
-// import { useAuth0 } from '../react-auth0-spa';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { addHealth } from '../actions';
+import { connect } from 'react-redux';
 
 import './AddDay.css';
 
-const AddDay = props => {
+const AddDay = ({ addHealth }) => {
     const { register, handleSubmit, errors } = useForm();
-    const [durationHours, setDurationHours] = useState(0);
-    const [durationMinutes, setDurationMinutes] = useState(0);
-    // const { getTokenSilently } = useAuth0();
+
     let history = useHistory();
 
-    const onSubmit = async data => {
-        // data.duration = durationHours + durationMinutes;
-        // try {
-        //     const token = await getTokenSilently();
-        //     const response = await fetch(process.env.REACT_APP_API_URL, {
-        //         method: 'POST',
-        //         headers: {
-        //             Authorization: `Bearer ${token}`,
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(data),
-        //     });
-        //     const responseData = await response.json();
-        //     // console.log(responseData);
-
-        // } catch (error) {
-        //     console.error(error);
-        // }
-        // history.push('/data');
-    }
-
-    const handleDurationChanges = e => {
-        if (e.target.name === 'durationHours') {
-            setDurationHours(e.target.value * 3600)
-        } else if (e.target.name === 'durationMinutes') {
-            setDurationMinutes(e.target.value * 60)
-        }
+    const onSubmit = health => {
+        addHealth(health)
+        history.push('/data');
     }
 
     return (
@@ -82,6 +57,7 @@ const AddDay = props => {
                             />
                             {errors.bedtime_start && <p className='error-message'>This field is required.</p>}
                         </div>
+
                         <div className='form__input'>
                             <label >Sleep duration</label>
                             <div className='duration-container'>
@@ -93,8 +69,9 @@ const AddDay = props => {
                                         min='0'
                                         max='24'
                                         aria-label='Duration Hours'
-                                        onChange={handleDurationChanges}
-                                        required
+                                        ref={register({ required: true })}
+                                    // onChange={handleDurationChanges}
+                                    // required
                                     />
                                     <label htmlFor='durationHours'>hrs</label>
                                 </div>
@@ -106,8 +83,9 @@ const AddDay = props => {
                                         min='0'
                                         max='59'
                                         aria-label='Duration Minutes'
-                                        onChange={handleDurationChanges}
-                                        required
+                                        ref={register({ required: true })}
+                                    // onChange={handleDurationChanges}
+                                    // required
                                     />
                                     <label htmlFor='durationMinutes'>
                                         mins
@@ -115,6 +93,7 @@ const AddDay = props => {
                                 </div>
                             </div>
                         </div>
+
                         <div className='form__input'>
                             <label htmlFor='readiness'>Readiness</label>
                             <input
@@ -169,4 +148,4 @@ const AddDay = props => {
     )
 }
 
-export default AddDay;
+export default connect(null, { addHealth })(AddDay);

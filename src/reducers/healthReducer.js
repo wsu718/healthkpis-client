@@ -2,17 +2,15 @@ import {
     GET_HEALTH_START,
     GET_HEALTH_SUCCESS,
     GET_HEALTH_FAILURE,
-    GET_HEALTHBYDATE_START,
-    GET_HEALTHBYDATE_SUCCESS,
-    GET_HEALTHBYDATE_FAILURE,
-
+    ADD_HEALTH_START,
+    ADD_HEALTH_SUCCESS,
+    ADD_HEALTH_FAILURE
 } from "../actions";
 
 const initialState = {
     isFetchingData: false,
     isLoading: false,
     error: '',
-    healthByDate: {},
     health: [
         {
             id: '',
@@ -43,34 +41,33 @@ const healthReducer = (state = initialState, action) => {
                 isFetchingData: true,
                 error: '',
                 health: action.payload
-            }
+            };
         case GET_HEALTH_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
                 error: action.payload
-            }
-        case GET_HEALTHBYDATE_START:
-            return {
-                ...state,
-                isFetchingData: false
             };
-        case GET_HEALTHBYDATE_SUCCESS:
+        case ADD_HEALTH_START:
             return {
                 ...state,
-                isFetchingData: true,
-                error: '',
+                isFetchingData: true
+            };
+        case ADD_HEALTH_SUCCESS:
+            return {
+                ...state,
                 health: [
                     ...state.health,
-                    action.payload[0]
+                    action.payload
                 ]
-            }
-        case GET_HEALTHBYDATE_FAILURE:
+            };
+        case ADD_HEALTH_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
                 error: action.payload
-            }
+            };
+
         default:
             return state
     }
