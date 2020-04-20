@@ -13,18 +13,13 @@ import history from "./utils/history";
 
 import './App.css';
 
-function App(props) {
+function App() {
 
-  console.log(props)
-  // console.log(params)
-  // console.log(match.params)
   const { isAuthenticated, loading } = useAuth0();
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  // console.log(process.env.REACT_APP_API_URL)
 
   return (
 
