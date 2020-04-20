@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useAuth0 } from "./react-auth0-spa";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
@@ -8,6 +8,7 @@ import HealthData from './components/HealthData';
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
 import ViewDay from './components/ViewDay';
+import EditDay from './components/EditDay';
 
 import history from "./utils/history";
 
@@ -27,31 +28,40 @@ function App() {
 
 
       <Router history={history}>
+
         <NavBar />
 
-        <Route exact path='/'>
-          {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}
-        </Route>
+        <Switch>
 
-        <PrivateRoute path='/dashboard'>
-          <AddDay />
-        </PrivateRoute>
+          <Route exact path='/'>
+            {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}
+          </Route>
 
-        <PrivateRoute path='/profile'>
-          <Profile />
-        </PrivateRoute>
+          <PrivateRoute path='/dashboard'>
+            <AddDay />
+          </PrivateRoute>
 
-        <PrivateRoute path='/addday'>
-          <AddDay />
-        </PrivateRoute>
+          <PrivateRoute path='/profile'>
+            <Profile />
+          </PrivateRoute>
 
-        <PrivateRoute path='/data'>
-          <HealthData />
-        </PrivateRoute>
+          <PrivateRoute path='/addday'>
+            <AddDay />
+          </PrivateRoute>
 
-        <PrivateRoute path='/day/:date'>
-          <ViewDay />
-        </PrivateRoute>
+          <PrivateRoute path='/data'>
+            <HealthData />
+          </PrivateRoute>
+
+          <PrivateRoute path='/day/:date/edit'>
+            <EditDay />
+          </PrivateRoute>
+
+          <PrivateRoute path='/day/:date'>
+            <ViewDay />
+          </PrivateRoute>
+
+        </Switch>
 
       </Router>
     </div >

@@ -1,6 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { deleteHealth } from '../actions';
+import { connect } from 'react-redux'
 
-const FoundDay = ({ health, date }) => {
+const FoundDay = ({ health, date, deleteHealth }) => {
+
+    const handleDelete = () => {
+        deleteHealth(health.id)
+    }
+
     return (
         <div>
             <h2>
@@ -42,8 +50,12 @@ const FoundDay = ({ health, date }) => {
                 <p>{health.weight}</p>
             </div>
 
+            <button onClick={handleDelete}>Delete</button>
+
+            <Link to={`/day/${date}/edit`}><button>Edit</button></Link>
+
         </div>
     )
 }
 
-export default FoundDay;
+export default connect(null, { deleteHealth })(FoundDay);

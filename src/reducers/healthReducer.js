@@ -4,7 +4,10 @@ import {
     GET_HEALTH_FAILURE,
     ADD_HEALTH_START,
     ADD_HEALTH_SUCCESS,
-    ADD_HEALTH_FAILURE
+    ADD_HEALTH_FAILURE,
+    DELETE_HEALTH_START,
+    DELETE_HEALTH_SUCCESS,
+    DELETE_HEALTH_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -67,7 +70,25 @@ const healthReducer = (state = initialState, action) => {
                 isFetchingData: false,
                 error: action.payload
             };
-
+        case DELETE_HEALTH_START:
+            return {
+                ...state,
+                isFetchingData: true,
+            };
+        case DELETE_HEALTH_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: false,
+                health: [
+                    ...state.health.filter(health => health.id !== action.payload)
+                ]
+            };
+        case DELETE_HEALTH_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            };
         default:
             return state
     }
