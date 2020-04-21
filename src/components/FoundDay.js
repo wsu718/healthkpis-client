@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { deleteHealth } from '../actions';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 const FoundDay = ({ health, date, deleteHealth }) => {
 
+    let history = useHistory();
+
     const handleDelete = () => {
         deleteHealth(health.id)
+        history.push(`/data`)
     }
 
     return (
