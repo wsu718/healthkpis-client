@@ -14,7 +14,7 @@ const AddDay = ({ addHealth }) => {
 
     const onSubmit = health => {
         // Uses date from date input to determine the week of the year
-        health.weekOfYear = moment(health.summary_date).week()
+        health.week_of_year = moment(health.summary_date).week()
         addHealth(health);
         history.push('/data');
     }

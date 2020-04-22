@@ -39,7 +39,7 @@ const EditDay = () => {
 
 
     const onSubmit = healthEdits => {
-        healthEdits.weekOfYear = moment(healthEdits.summary_date).week()
+        healthEdits.week_of_year = moment(healthEdits.summary_date).week()
         dispatch(updateHealth(healthByDate.id, healthEdits))
         history.push('/data');
     }
