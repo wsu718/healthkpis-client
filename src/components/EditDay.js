@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { getHealthByDate, updateHealth } from '../actions';
+import moment from 'moment';
 
 const EditDay = () => {
     const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const EditDay = () => {
     }, [healthByDate, reset])
 
 
-    const onSubmit = (healthEdits) => {
+    const onSubmit = healthEdits => {
+        healthEdits.weekOfYear = moment(healthEdits.summary_date).week()
         dispatch(updateHealth(healthByDate.id, healthEdits))
         history.push('/data');
     }
