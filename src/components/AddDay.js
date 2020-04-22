@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { addHealth } from '../actions';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import './AddDay.css';
 
@@ -12,7 +13,9 @@ const AddDay = ({ addHealth }) => {
     let history = useHistory();
 
     const onSubmit = health => {
-        addHealth(health)
+        // Uses date from date input to determine the week of the year
+        health.weekOfYear = moment(health.summary_date).week()
+        addHealth(health);
         history.push('/data');
     }
 
@@ -45,103 +48,94 @@ const AddDay = ({ addHealth }) => {
                             ref={register({ required: true })}
                         />
                         {errors.score_total && <p className='error-message'>This field is required.</p>}
-
-
-                        <div className='form__input'>
-                            <label htmlFor='bedtime'>Bedtime</label>
-                            <input
-                                type='time'
-                                name='bedtime_start'
-                                id='bedtime'
-                                ref={register({ required: true })}
-                            />
-                            {errors.bedtime_start && <p className='error-message'>This field is required.</p>}
-                        </div>
-
-                        <div className='form__input'>
-                            <label >Sleep duration</label>
-                            <div className='duration-container'>
-                                <div>
-                                    <input
-                                        type='number'
-                                        name='durationHours'
-                                        id='durationHours'
-                                        min='0'
-                                        max='24'
-                                        aria-label='Duration Hours'
-                                        ref={register({ required: true })}
-                                    // onChange={handleDurationChanges}
-                                    // required
-                                    />
-                                    <label htmlFor='durationHours'>hrs</label>
-                                </div>
-                                <div>
-                                    <input
-                                        id='durationMinutes'
-                                        type='number'
-                                        name='durationMinutes'
-                                        min='0'
-                                        max='59'
-                                        aria-label='Duration Minutes'
-                                        ref={register({ required: true })}
-                                    // onChange={handleDurationChanges}
-                                    // required
-                                    />
-                                    <label htmlFor='durationMinutes'>
-                                        mins
+                    </div>
+                    <div className='form__input'>
+                        <label htmlFor='bedtime'>Bedtime</label>
+                        <input
+                            type='time'
+                            name='bedtime_start'
+                            id='bedtime'
+                            ref={register({ required: true })}
+                        />
+                        {errors.bedtime_start && <p className='error-message'>This field is required.</p>}
+                    </div>
+                    <div className='form__input'>
+                        <label >Sleep duration</label>
+                        <div className='duration-container'>
+                            <div>
+                                <input
+                                    type='number'
+                                    name='durationHours'
+                                    id='durationHours'
+                                    min='0'
+                                    max='24'
+                                    aria-label='Duration Hours'
+                                    ref={register({ required: true })}
+                                />
+                                <label htmlFor='durationHours'>hrs</label>
+                            </div>
+                            <div>
+                                <input
+                                    id='durationMinutes'
+                                    type='number'
+                                    name='durationMinutes'
+                                    min='0'
+                                    max='59'
+                                    aria-label='Duration Minutes'
+                                    ref={register}
+                                />
+                                <label htmlFor='durationMinutes'>
+                                    mins
                                     </label>
-                                </div>
                             </div>
                         </div>
-
-                        <div className='form__input'>
-                            <label htmlFor='readiness'>Readiness</label>
-                            <input
-                                type='number'
-                                name='readiness'
-                                id='readiness'
-                                min='0'
-                                max='100'
-                                ref={register({ required: true })}
-                            />
-                            {errors.readiness && <p className='error-message'>This field is required.</p>}
-
-                        </div>
-                        <div className='form__input'>
-                            <label htmlFor='hrv'>HRV avg</label>
-                            <input
-                                type='number'
-                                name='hrv'
-                                min='0'
-                                max='100'
-                                ref={register({ required: true })}
-                            />
-                            {errors.hrv && <p className='error-message'>This field is required.</p>}
-                        </div>
-                        <div className='form__input'>
-                            <label htmlFor='rhr'>RHR avg</label>
-                            <input
-                                type='number'
-                                name='rhr'
-                                min='0'
-                                max='100'
-                                ref={register({ required: true })}
-                            />
-                            {errors.rhr && <p className='error-message'>This field is required.</p>}
-                        </div>
-                        <div className='form__input'>
-                            <label htmlFor='weight'>Weight (lbs)</label>
-                            <input
-                                type='number'
-                                name='weight'
-                                min='0'
-                                max='500'
-                                ref={register}
-                            />
-
-                        </div>
-                        <input type='submit' />
                     </div>
+                    <div className='form__input'>
+                        <label htmlFor='readiness'>Readiness</label>
+                        <input
+                            type='number'
+                            name='readiness'
+                            id='readiness'
+                            min='0'
+                            max='100'
+                            ref={register({ required: true })}
+                        />
+                        {errors.readiness && <p className='error-message'>This field is required.</p>}
+
+                    </div>
+                    <div className='form__input'>
+                        <label htmlFor='hrv'>HRV avg</label>
+                        <input
+                            type='number'
+                            name='hrv'
+                            min='0'
+                            max='100'
+                            ref={register({ required: true })}
+                        />
+                        {errors.hrv && <p className='error-message'>This field is required.</p>}
+                    </div>
+                    <div className='form__input'>
+                        <label htmlFor='rhr'>RHR avg</label>
+                        <input
+                            type='number'
+                            name='rhr'
+                            min='0'
+                            max='100'
+                            ref={register({ required: true })}
+                        />
+                        {errors.rhr && <p className='error-message'>This field is required.</p>}
+                    </div>
+                    <div className='form__input'>
+                        <label htmlFor='weight'>Weight (lbs)</label>
+                        <input
+                            type='number'
+                            name='weight'
+                            min='0'
+                            max='500'
+                            ref={register}
+                        />
+                    </div>
+                    <input type='submit' />
                 </form>
             </main>
         </div>
