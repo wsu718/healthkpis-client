@@ -20,7 +20,8 @@ const NavBar = () => {
 
                     {isAuthenticated && (
                         <ul className="top-nav__ul">
-                            <li className='top-nav__li'><NavLink to="/data" className='top-nav__a'>Data</NavLink></li>
+                            <li className='top-nav__li'><NavLink to="/data" className='top-nav__a'>Days</NavLink></li>
+                            <li className='top-nav__li'><NavLink to="/weeks" className='top-nav__a'>Weeks</NavLink></li>
                             <li className='top-nav__li'><NavLink to="/addday" className='top-nav__a'>Add Day</NavLink></li>
                         </ul>
                     )}

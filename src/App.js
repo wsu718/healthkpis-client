@@ -9,6 +9,7 @@ import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
 import ViewDay from './components/ViewDay';
 import EditDay from './components/EditDay';
+import Weeks from './components/Weeks';
 
 import history from "./utils/history";
 
@@ -51,6 +52,10 @@ function App() {
 
           <PrivateRoute path='/data'>
             <HealthData />
+          </PrivateRoute>
+
+          <PrivateRoute path='/weeks'>
+            <Weeks />
           </PrivateRoute>
 
           <PrivateRoute path='/day/:date/edit'>

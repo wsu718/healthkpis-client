@@ -13,7 +13,10 @@ import {
     GET_HEALTHBYDATE_FAILURE,
     UPDATE_HEALTH_START,
     UPDATE_HEALTH_SUCCESS,
-    UPDATE_HEALTH_FAILURE
+    UPDATE_HEALTH_FAILURE,
+    GET_HEALTHWEEKS_START,
+    GET_HEALTHWEEKS_SUCCESS,
+    GET_HEALTHWEEKS_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -32,9 +35,13 @@ const initialState = {
             hrv: 32,
             rhr: 49,
             weight: 191,
+            week_of_year: 50,
             healthByDate: []
         }
     ],
+    weeks: [
+
+    ]
 };
 
 const healthReducer = (state = initialState, action) => {
@@ -134,6 +141,24 @@ const healthReducer = (state = initialState, action) => {
                 })
             };
         case UPDATE_HEALTH_FAILURE:
+            return {
+                ...state,
+                isFetchingData: false,
+                error: action.payload
+            };
+        case GET_HEALTHWEEKS_START:
+            return {
+                ...state,
+                isFetchingData: false
+            };
+        case GET_HEALTHWEEKS_SUCCESS:
+            return {
+                ...state,
+                isFetchingData: true,
+                error: '',
+                weeks: action.payload
+            };
+        case GET_HEALTHWEEKS_FAILURE:
             return {
                 ...state,
                 isFetchingData: false,
