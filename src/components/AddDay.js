@@ -14,7 +14,7 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/datetime/lib/css/blueprint-datetime.css"
 
 const AddDay = ({ addHealth }) => {
-    const { register, handleSubmit, errors, setValue } = useForm();
+    const { register, handleSubmit, errors, setValue, watch, control } = useForm();
 
     let history = useHistory();
 
@@ -26,6 +26,10 @@ const AddDay = ({ addHealth }) => {
         setValue("duration", duration)
 
     }
+
+    // const watchAllFields = watch();
+
+    // console.log(watchAllFields)
 
     const onSubmit = health => {
         // Uses date from date input to determine the week of the year
@@ -123,22 +127,16 @@ const AddDay = ({ addHealth }) => {
                     </div>
                 </div> */}
 
-                {/* <FormControl isInvalid={errors.duration}>
-                    <Stack direction='row'>
-                        <FormLabel htmlFor='readiness'>Sleep duration</FormLabel>
-                        <NumberInput min={0} max={99}>
-                            <NumberInputField type="number" name='readiness' ref={register({ required: 'This field is required.', max: { value: 99, message: 'The maximum score is 99.' }, min: { value: 1, message: 'The minimum score is 1.' } })} />
-                            <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                            </NumberInputStepper>
-                        </NumberInput>
+                <FormControl >
 
-                        <FormErrorMessage>
-                            {errors.readiness && <>{errors.readiness.message}</>}
-                        </FormErrorMessage>
-                    </Stack>
-                </FormControl> */}
+                    <FormLabel htmlFor='readiness'>Sleep duration</FormLabel>
+                    <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} />
+
+                    <FormErrorMessage>
+                        {errors.readiness && <>{errors.readiness.message}</>}
+                    </FormErrorMessage>
+
+                </FormControl>
 
                 <FormControl isInvalid={errors.readiness}>
                     <FormLabel htmlFor='readiness'>Readiness</FormLabel>
@@ -196,11 +194,11 @@ const AddDay = ({ addHealth }) => {
                     </FormErrorMessage>
                 </FormControl>
 
-                {/* <div>
+                <div>
 
 
-                    <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} />
-                </div> */}
+
+                </div>
 
 
 
