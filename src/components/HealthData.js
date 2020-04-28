@@ -4,6 +4,7 @@ import moment from 'moment';
 import { getHealth } from '../actions';
 import { connect } from 'react-redux';
 import './HealthData.css'
+import { Heading, Box } from '@chakra-ui/core';
 
 const HealthData = ({ health, getHealth }) => {
 
@@ -12,10 +13,8 @@ const HealthData = ({ health, getHealth }) => {
     }, [getHealth]);
 
     return (
-
-
-        <div>
-            <h2>Your health data</h2>
+        <Box pt='10' px='8'>
+            <Heading size='xl'>Daily data</Heading>
             <table className="datatable">
                 <thead>
                     <tr>
@@ -48,7 +47,7 @@ const HealthData = ({ health, getHealth }) => {
 
                 </tbody>
             </table>
-        </div>
+        </Box>
     )
 }
 

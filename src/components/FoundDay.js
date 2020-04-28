@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { deleteHealth } from '../actions';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import { Heading, Stat, StatLabel, StatNumber, Button } from '@chakra-ui/core';
 
 const FoundDay = ({ health, date, deleteHealth }) => {
 
@@ -16,48 +16,51 @@ const FoundDay = ({ health, date, deleteHealth }) => {
 
     return (
         <div>
-            <h2>
+            <Heading>
                 {date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}
-            </h2>
+            </Heading>
 
-            <div>
+            <Stat>
+                <StatLabel>Sleep score</StatLabel>
+                <StatNumber>{health.score_total}</StatNumber>
+            </Stat>
 
-                <p>Sleep score</p>
-                <p>{health.score_total}</p>
-            </div>
+            <Stat>
+                <StatLabel>Duration</StatLabel>
+                <StatNumber>{health.duration}</StatNumber>
+            </Stat>
 
-            <div>
-                <p>Duration</p>
-                <p>{health.duration}</p>
-            </div>
-            <div>
-                <p>Bedtime</p>
-                <p>{health.bedtime_start}</p>
-            </div>
 
-            <div>
-                <p>Readiness</p>
-                <p>{health.readiness}</p>
-            </div>
+            <Stat>
+                <StatLabel>Bedtime</StatLabel>
+                <StatNumber>{health.bedtime_start}</StatNumber>
+            </Stat>
 
-            <div>
-                <p>HRV</p>
-                <p>{health.hrv}</p>
-            </div>
+            <Stat>
+                <StatLabel>Readiness</StatLabel>
+                <StatNumber>{health.readiness}</StatNumber>
+            </Stat>
 
-            <div>
-                <p>RHR</p>
-                <p>{health.rhr}</p>
-            </div>
+            <Stat>
+                <StatLabel>HRV</StatLabel>
+                <StatNumber>{health.hrv}</StatNumber>
+            </Stat>
 
-            <div>
-                <p>Weight</p>
-                <p>{health.weight}</p>
-            </div>
+            <Stat>
+                <StatLabel>RHR</StatLabel>
+                <StatNumber>{health.rhr}</StatNumber>
+            </Stat>
+
+            <Stat>
+                <StatLabel>Weight</StatLabel>
+                <StatNumber>{health.weight}</StatNumber>
+            </Stat>
 
             <button onClick={handleDelete}>Delete</button>
 
-            <Link to={`/day/${date}/edit`}><button>Edit</button></Link>
+            <Button onClick={handleDelete}>Delete</Button>
+
+            {/* <Link to={`/day/${date}/edit`}><button>Edit</button></Link> */}
 
         </div>
     )

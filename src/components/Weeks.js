@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWeeks } from '../actions';
+import { Heading, Box } from '@chakra-ui/core';
+
 
 const Weeks = () => {
     const dispatch = useDispatch();
@@ -10,13 +12,13 @@ const Weeks = () => {
 
     useEffect(() => {
         dispatch(getWeeks());
-    }, [getWeeks, dispatch]);
+    }, [dispatch]);
 
     return (
 
 
-        <div>
-            <h2>Weekly data</h2>
+        <Box pt='10' px='8'>
+            <Heading size='xl'>Weekly data</Heading>
             <table className="datatable">
                 <thead>
                     <tr>
@@ -48,7 +50,7 @@ const Weeks = () => {
 
                 </tbody>
             </table>
-        </div>
+        </Box>
     )
 }
 

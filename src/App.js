@@ -1,6 +1,10 @@
 import React from 'react';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
-import { useAuth0 } from "./react-auth0-spa";
+import { useAuth0 } from './react-auth0-spa';
+
+import { CSSReset, ThemeProvider, Box } from '@chakra-ui/core';
+import customTheme from './theme/customTheme';
+
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import AddDay from './components/AddDay';
@@ -24,52 +28,53 @@ function App() {
   }
 
   return (
-
-    <div className='App'>
-
-
+    <ThemeProvider theme={customTheme}>
+      <CSSReset />
+      {/* <div className='App'> */}
       <Router history={history}>
 
         <NavBar />
 
-        <Switch>
+        <Box maxW='3xl' mx='auto'>
 
-          <Route exact path='/'>
-            {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}
-          </Route>
+          <Switch>
+            <Route exact path='/'>
+              {isAuthenticated ? <Redirect to='/dashboard' /> : <LandingPage />}
+            </Route>
 
-          <PrivateRoute path='/dashboard'>
-            <AddDay />
-          </PrivateRoute>
+            <PrivateRoute path='/dashboard'>
+              <AddDay />
+            </PrivateRoute>
 
-          <PrivateRoute path='/profile'>
-            <Profile />
-          </PrivateRoute>
+            <PrivateRoute path='/profile'>
+              <Profile />
+            </PrivateRoute>
 
-          <PrivateRoute path='/addday'>
-            <AddDay />
-          </PrivateRoute>
+            <PrivateRoute path='/addday'>
+              <AddDay />
+            </PrivateRoute>
 
-          <PrivateRoute path='/data'>
-            <HealthData />
-          </PrivateRoute>
+            <PrivateRoute path='/data'>
+              <HealthData />
+            </PrivateRoute>
 
-          <PrivateRoute path='/weeks'>
-            <Weeks />
-          </PrivateRoute>
+            <PrivateRoute path='/weeks'>
+              <Weeks />
+            </PrivateRoute>
 
-          <PrivateRoute path='/day/:date/edit'>
-            <EditDay />
-          </PrivateRoute>
+            <PrivateRoute path='/day/:date/edit'>
+              <EditDay />
+            </PrivateRoute>
 
-          <PrivateRoute path='/day/:date'>
-            <ViewDay />
-          </PrivateRoute>
+            <PrivateRoute path='/day/:date'>
+              <ViewDay />
+            </PrivateRoute>
+          </Switch>
 
-        </Switch>
-
+        </Box>
       </Router>
-    </div >
+      {/* </div> */}
+    </ThemeProvider>
 
   );
 }

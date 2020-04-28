@@ -10,7 +10,6 @@ const ViewDay = () => {
     // Replaces mapStateToProps and gives access to useParams hook inside component 
     const health = useSelector(state => state.healthReducer.health.find(day => day.summary_date === date));
 
-
     if (health) {
         return <FoundDay health={health} date={date} />
     } else {

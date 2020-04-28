@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
 
 
-/* Reused styles */
-.primary-button {
+/* .primary-button {
   font-size: 1rem;
   padding: .5rem 1rem;
   background-color: #5850ec;
@@ -12,7 +11,7 @@
   cursor: pointer;
   border: 0;
   text-decoration: none;
-}
+} */
 
 h2 {
   font-weight: 700;
@@ -20,23 +19,12 @@ h2 {
   color: #161e2e;
 }
 
-
-
-/* App */
-.App {
-  
+/* .App {
   max-width: 750px;
   margin: auto;
-  
-}
+} */
 
-.logo {
+/* .logo {
   height: 2rem;
   width: auto;
-}
-
-.error-message {
-  font-size: 0.875rem;
-  color: rgb(229, 62, 62);
-  margin-top: 0.5rem;
-}
+} */
