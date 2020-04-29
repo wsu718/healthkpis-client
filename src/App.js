@@ -14,6 +14,7 @@ import NavBar from './components/NavBar';
 import ViewDay from './components/ViewDay';
 import EditDay from './components/EditDay';
 import Weeks from './components/Weeks';
+import Header from './components/Header';
 
 import history from "./utils/history";
 
@@ -32,10 +33,11 @@ function App() {
       <CSSReset />
       {/* <div className='App'> */}
       <Router history={history}>
+        {isAuthenticated && (
+          <Header />
+        )}
 
-        <NavBar />
-
-        <Box maxW='3xl' mx='auto'>
+        <Box maxW='72rem' mx='auto' px={8} pt={10}>
 
           <Switch>
             <Route exact path='/'>

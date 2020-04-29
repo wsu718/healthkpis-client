@@ -17,7 +17,7 @@ const Weeks = () => {
     return (
 
 
-        <Box pt='10' px='8'>
+        <Box >
             <Heading size='xl'>Weekly data</Heading>
             <table className="datatable">
                 <thead>
