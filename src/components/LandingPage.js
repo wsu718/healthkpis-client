@@ -1,45 +1,33 @@
 import React from 'react';
 import { useAuth0 } from "../react-auth0-spa";
-import './LandingPage.css'
-import { NavLink } from 'react-router-dom';
 import Logo from '../assets/shapes-100.png';
-import './NavBar.css';
-import { Button } from '@chakra-ui/core';
+import { Button, Image, Heading, Text, Box, Flex } from '@chakra-ui/core';
 
 const LandingPage = () => {
 
     const { loginWithRedirect } = useAuth0();
 
     return (
-        <div>
-            <header>
-                <nav className='top-nav'>
-                    <div className='top-nav__primary-nav' >
-                        <NavLink to="/data">
-                            <img src={Logo} className='top-nav__logo' alt='HeathKPIs' />
-                        </NavLink>
-                    </div>
+        <Box>
+            <Flex mx={6} justifyContent='space-between'>
+                <Image src={Logo} size="40px" alt='HeathKPIs' />
+                <Button onClick={() => loginWithRedirect({})}>Log in</Button>
+            </Flex>
 
-                    <div className='top-nav__account'>
-                        <Button onClick={() => loginWithRedirect({})}>Log in</Button>
-                    </div>
-                </nav>
-            </header>
-
-            <main className='land'>
-                <h2 className='land__tagline'>
+            <Flex direction='column' alignItems='center' mt={10}>
+                <Heading fontSize='4rem' letterSpacing='-.025em' color='#5850ec' textAlign='center'>
                     Improve your health
                   <br />
-                    <span className='land__tagline--black'>through data</span>
-                </h2>
+                    <Box as="span" color='gray.700'>through data</Box>
+                </Heading>
 
-                <p className='land__copy'>
+                <Text color='gray.500' fontSize='1.25rem' pt={8}>
                     Track your most important health data every day. Create weekly experiments and compare the results.
-                </p>
+                </Text>
 
-                <Button mt={6} onClick={() => loginWithRedirect({})} className="primary-button">Get started</Button>
-            </main>
-        </div>
+                <Button mt={10} size='md' onClick={() => loginWithRedirect({})} className="primary-button">Get started</Button>
+            </Flex>
+        </Box >
     )
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Flex, Text, Button, Image } from "@chakra-ui/core";
+import { Box, Flex, Text, Button, Image } from "@chakra-ui/core";
 import { NavLink } from 'react-router-dom';
 import { useAuth0 } from "../react-auth0-spa";
 import Logo from '../assets/shapes-100.png';
@@ -10,11 +10,11 @@ const MenuItems = ({ children }) => (
     </Text>
 );
 
-const Header = props => {
+const Header = () => {
     const [show, setShow] = React.useState(false);
     const handleToggle = () => setShow(!show);
 
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const { logout } = useAuth0();
 
     return (
         <Flex
@@ -22,14 +22,12 @@ const Header = props => {
             align="center"
             justify="space-between"
             wrap="wrap"
-            padding="1.5rem"
+            pt={6}
             bg="white"
             color="gray.800"
             maxW="72rem"
             mx="auto"
-            px="8"
-            align="bottom"
-            {...props}
+            px={16}
         >
             <Flex align="center" mr={5}>
                 <Image src={Logo} size="40px" mr={10} alt='HeathKPIs' />
@@ -61,7 +59,7 @@ const Header = props => {
             >
                 <Button bg="gray.100" onClick={() => logout()}>Log out        </Button>
             </Box>
-        </Flex>
+        </Flex >
     );
 };
 

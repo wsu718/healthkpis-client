@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { addHealth } from '../actions';
@@ -7,8 +7,8 @@ import moment from 'moment';
 import { Box, Heading, FormControl, FormLabel, Input, FormErrorMessage, Button, Flex } from '@chakra-ui/core';
 import { TimePicker } from '@blueprintjs/datetime';
 
+//Styling Blueprint's timepicker component 
 import './AddDay.css';
-
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/datetime/lib/css/blueprint-datetime.css";
@@ -90,7 +90,9 @@ const AddDay = ({ addHealth }) => {
 
                     <FormControl mt={6}>
                         <FormLabel htmlFor='readiness'>Sleep duration</FormLabel>
-                        <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} />
+                        <Box>
+                            <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} />
+                        </Box>
                         <FormErrorMessage>
                             {/* Need to add error messages for this one */}
                         </FormErrorMessage>

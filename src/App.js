@@ -10,7 +10,6 @@ import Profile from "./components/Profile";
 import AddDay from './components/AddDay';
 import HealthData from './components/HealthData';
 import LandingPage from './components/LandingPage';
-import NavBar from './components/NavBar';
 import ViewDay from './components/ViewDay';
 import EditDay from './components/EditDay';
 import Weeks from './components/Weeks';
