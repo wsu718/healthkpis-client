@@ -3,12 +3,30 @@ import { Box, Flex, Text, Button, Image } from "@chakra-ui/core";
 import { NavLink } from 'react-router-dom';
 import { useAuth0 } from "../react-auth0-spa";
 import Logo from '../assets/shapes-100.png';
+import styled from '@emotion/styled';
 
 const MenuItems = ({ children }) => (
-    <Text mt={{ base: 4, md: 0 }} mr={12} fontSize="md" display="block" >
+    <Text mt={{ base: 4, md: 0 }} mr={12} fontSize={{ sm: "xl", md: "md" }} display="block" >
         {children}
     </Text>
 );
+
+const StyledLink = styled(NavLink)`
+  &.active {
+    border-bottom-width: 2px;
+    padding-bottom: 1rem;
+    border-color: #f44336;
+    color: #161e2e
+  }
+  &:hover {
+    text-decoration: none;
+    color: #374151;
+    border-color: #d2d6dc;
+    border-bottom-width: 2px;
+    padding-bottom: 1rem;
+}
+`;
+
 
 const Header = () => {
     const [show, setShow] = React.useState(false);
@@ -44,13 +62,29 @@ const Header = () => {
                 width={{ sm: "full", md: "auto" }}
                 alignItems="center"
                 flexGrow={1}
-                color="gray.800"
+                color="gray.500"
                 align="bottom"
+                fontWeight='medium'
             >
 
-                <MenuItems><NavLink to="/data" >Days</NavLink></MenuItems>
-                <MenuItems><NavLink to="/weeks">Weeks</NavLink></MenuItems>
-                <MenuItems><NavLink to="/addday">Add Day</NavLink></MenuItems>
+                <MenuItems>
+
+                    <StyledLink to="/data">
+                        Days
+                    </StyledLink>
+                </MenuItems>
+
+                <MenuItems >
+                    <StyledLink to="/weeks">
+                        Weeks
+                    </StyledLink>
+                </MenuItems>
+
+                <MenuItems>
+                    <StyledLink to="/addday">
+                        Add Day
+                    </StyledLink>
+                </MenuItems>
             </Flex>
 
             <Box

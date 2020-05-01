@@ -13,6 +13,7 @@ const Table = styled.table`
         padding: .9rem .9rem .9rem 0;
         border: 1px solid #dbdbdb;
         border-width: 0 0 1px;
+        fontWeight: bold;
     }
     & td {
         padding: .9rem .9rem .9rem 0;

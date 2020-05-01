@@ -36,7 +36,7 @@ function App() {
           <Header />
         )}
 
-        <Box maxW='72rem' mx='auto' px={8} pt={10}>
+        <Box maxW='72rem' mx='auto' px={8} pt={10} color='gray.800'>
 
           <Switch>
             <Route exact path='/'>

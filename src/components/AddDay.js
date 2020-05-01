@@ -25,7 +25,7 @@ const AddDay = ({ addHealth }) => {
         // Want time in seconds
         // TimePicker sends time stamp that looks like this: Sun Dec 31 1899 04:11:00 GMT-0800 (Pacific Standard Time) -- need to convert the hour/min to a moment, then get difference since the start of that day in seconds
         let duration = moment(time).diff(moment(time).startOf('day'), 'seconds')
-        console.log(`this is duration variable ${duration}`)
+        // console.log(`this is duration variable ${duration}`)
         setValue("duration", duration)
 
     }
@@ -48,7 +48,7 @@ const AddDay = ({ addHealth }) => {
                 Add day
             </Heading>
 
-            <Flex >
+            <Flex>
                 <form onSubmit={handleSubmit(onSubmit)} css={{
                     maxWidth: '20rem'
                 }}>
@@ -89,12 +89,10 @@ const AddDay = ({ addHealth }) => {
                     </FormControl>
 
                     <FormControl mt={6}>
-                        <FormLabel htmlFor='readiness'>Sleep duration</FormLabel>
-                        <Box>
-                            <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} />
-                        </Box>
+                        <FormLabel htmlFor='duration'>Sleep duration</FormLabel>
+                        <TimePicker selectAllOnFocus='true' onChange={handleTimePicker} name='duration' aria-label='duration' />
                         <FormErrorMessage>
-                            {/* Need to add error messages for this one */}
+                            {/* Need to add error messages */}
                         </FormErrorMessage>
                     </FormControl>
 
