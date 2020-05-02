@@ -27,7 +27,6 @@ const StyledLink = styled(NavLink)`
 }
 `;
 
-
 const Header = () => {
     const [show, setShow] = React.useState(false);
     const handleToggle = () => setShow(!show);

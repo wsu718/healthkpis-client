@@ -60,7 +60,6 @@ const EditDay = () => {
                             ref={register({ required: true })}
                             aria-label='Date'
                             className='adddaydate'
-                            defaultValue={new Date().toISOString().substr(0, 10)}
                         />
                         {errors.summary_date && <p className='error-message'>This field is required.</p>}
                     </div>

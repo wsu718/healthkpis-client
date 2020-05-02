@@ -13,7 +13,7 @@ const Table = styled.table`
         padding: .9rem .9rem .9rem 0;
         border: 1px solid #dbdbdb;
         border-width: 0 0 1px;
-        fontWeight: bold;
+        font-weight: bold;
     }
     & td {
         padding: .9rem .9rem .9rem 0;
@@ -43,7 +43,7 @@ const Weeks = () => {
 
         <Box pt='10' px={{ sm: '0', md: '8' }}>
             <Heading size='xl'>Weekly data</Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'xl' }} textAlign='left' mt={8}>
+            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8}>
                 <Table>
                     <thead>
                         <tr>
