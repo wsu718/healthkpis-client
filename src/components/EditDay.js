@@ -18,30 +18,15 @@ const EditDay = () => {
     let history = useHistory();
     const { date } = useParams();
     const healthByDate = useSelector(state => state.healthReducer.healthByDate)
-
-    const { register, handleSubmit, errors, setValue, reset, watch } = useForm();
+    const { register, handleSubmit, errors, setValue, reset } = useForm();
+    const [durationTime, setDurationTime] = useState();
 
     useEffect(() => {
         dispatch(getHealthByDate(date))
     }, [date, dispatch])
 
-
-    const [durationTime, setDurationTime] = useState();
-
     useEffect(() => {
-        // Duration is returned as seconds; convert to hours and minutes
-
         if (healthByDate) {
-            // let durationHours = Math.floor(healthByDate?.duration / 3600)
-            // console.log(durationHours)
-            // console.log(healthByDate?.duration)
-            // let durationMinutes = Math.floor(healthByDate?.duration / 60) - (durationHours * 60)
-            // // Sets default values for form inputs through React Hook Form
-
-            // let duration = healthByDate?.duration;
-            // durationDate = moment(healthByDate?.duration).add(duration, 's')
-            // // console.log(durationDate)
-
             reset({
                 score_total: healthByDate?.score_total,
                 summary_date: healthByDate?.summary_date,
@@ -52,36 +37,30 @@ const EditDay = () => {
                 weight: healthByDate?.weight,
                 duration: healthByDate?.duration
             })
+
+            // This is necessary because the Blueprint TimePicker wants it to look like this: Sun Dec 31 1899 04:11:00 GMT-0800 (Pacific Standard Time) -- need to convert the hour/min to a moment, then get difference since the start of that day in seconds
+
             setDurationTime(moment("Sun Dec 31 1899").add(healthByDate?.duration, 's').toDate())
         }
     }, [healthByDate, reset])
 
-
-
+    useEffect(() => {
+        register({ name: "duration" })
+    }, [register])
 
     const handleTimePicker = time => {
         // Want time in seconds
         // TimePicker sends time stamp that looks like this: Sun Dec 31 1899 04:11:00 GMT-0800 (Pacific Standard Time) -- need to convert the hour/min to a moment, then get difference since the start of that day in seconds
         setDurationTime(time)
         let duration = moment(time).diff(moment(time).startOf('day'), 'seconds')
-        // console.log(`this is duration variable ${duration}`)
         setValue("duration", duration)
     }
 
     const onSubmit = healthEdits => {
-        console.log(healthEdits)
         healthEdits.week_of_year = moment(healthEdits.summary_date).week()
         dispatch(updateHealth(healthByDate.id, healthEdits))
         history.push('/data');
     }
-
-    useEffect(() => {
-        register({ name: "duration" })
-    }, [register])
-
-
-    const watchYes = watch("duration")
-    console.log(watchYes)
 
     return (
 
@@ -185,134 +164,6 @@ const EditDay = () => {
 
             </Flex>
         </Box>
-
-        // <div>
-        //     <main>
-        //         <h2>
-        //             Edit day
-        //         </h2>
-        //         <form className='adddayform' onSubmit={handleSubmit(onSubmit)}>
-        //             <div className='form__input'>
-        //                 <label htmlFor='date'>Date</label>
-        //                 <input
-        //                     type='date'
-        //                     name='summary_date'
-        //                     ref={register({ required: true })}
-        //                     aria-label='Date'
-        //                     className='adddaydate'
-        //                 />
-        //                 {errors.summary_date && <p className='error-message'>This field is required.</p>}
-        //             </div>
-        //             <div className='form__input'>
-        //                 <label htmlFor='score'>Sleep score</label>
-        //                 <input
-        //                     type='number'
-        //                     name='score_total'
-        //                     min='0'
-        //                     max='100'
-        //                     ref={register({ required: true })}
-        //                 />
-        //                 {errors.score_total && <p className='error-message'>This field is required.</p>}
-
-
-        //                 <div className='form__input'>
-        //                     <label htmlFor='bedtime'>Bedtime</label>
-        //                     <input
-        //                         type='time'
-        //                         name='bedtime_start'
-        //                         id='bedtime'
-        //                         ref={register({ required: true })}
-        //                     />
-        //                     {errors.bedtime_start && <p className='error-message'>This field is required.</p>}
-        //                 </div>
-
-        //                 <div className='form__input'>
-        //                     <label >Sleep duration</label>
-        //                     <div className='duration-container'>
-        //                         <div>
-        //                             <input
-        //                                 type='number'
-        //                                 name='durationHours'
-        //                                 id='durationHours'
-        //                                 min='0'
-        //                                 max='24'
-        //                                 aria-label='Duration Hours'
-        //                                 ref={register({ required: true })}
-        //                             // onChange={handleDurationChanges}
-        //                             // required
-        //                             />
-        //                             <label htmlFor='durationHours'>hrs</label>
-        //                         </div>
-        //                         <div>
-        //                             <input
-        //                                 id='durationMinutes'
-        //                                 type='number'
-        //                                 name='durationMinutes'
-        //                                 min='0'
-        //                                 max='59'
-        //                                 aria-label='Duration Minutes'
-        //                                 ref={register({ required: true })}
-        //                             // onChange={handleDurationChanges}
-        //                             // required
-        //                             />
-        //                             <label htmlFor='durationMinutes'>
-        //                                 mins
-        //                             </label>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-
-        //                 <div className='form__input'>
-        //                     <label htmlFor='readiness'>Readiness</label>
-        //                     <input
-        //                         type='number'
-        //                         name='readiness'
-        //                         id='readiness'
-        //                         min='0'
-        //                         max='100'
-        //                         ref={register({ required: true })}
-        //                     />
-        //                     {errors.readiness && <p className='error-message'>This field is required.</p>}
-
-        //                 </div>
-        //                 <div className='form__input'>
-        //                     <label htmlFor='hrv'>HRV avg</label>
-        //                     <input
-        //                         type='number'
-        //                         name='hrv'
-        //                         min='0'
-        //                         max='100'
-        //                         ref={register({ required: true })}
-        //                     />
-        //                     {errors.hrv && <p className='error-message'>This field is required.</p>}
-        //                 </div>
-        //                 <div className='form__input'>
-        //                     <label htmlFor='rhr'>RHR avg</label>
-        //                     <input
-        //                         type='number'
-        //                         name='rhr'
-        //                         min='0'
-        //                         max='100'
-        //                         ref={register({ required: true })}
-        //                     />
-        //                     {errors.rhr && <p className='error-message'>This field is required.</p>}
-        //                 </div>
-        //                 <div className='form__input'>
-        //                     <label htmlFor='weight'>Weight (lbs)</label>
-        //                     <input
-        //                         type='number'
-        //                         name='weight'
-        //                         min='0'
-        //                         max='500'
-        //                         ref={register}
-        //                     />
-
-        //                 </div>
-        //                 <input type='submit' />
-        //             </div>
-        //         </form>
-        //     </main>
-        // </div>
     )
 }
 
