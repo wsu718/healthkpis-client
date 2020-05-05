@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { addHealth } from '../actions';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { Box, Heading, FormControl, FormLabel, Input, FormErrorMessage, Button, Flex } from '@chakra-ui/core';
+import { Box, Heading, FormControl, FormLabel, Input, FormErrorMessage, Button, Flex, useToast } from '@chakra-ui/core';
 import { TimePicker } from '@blueprintjs/datetime';
 
 //Styling Blueprint's timepicker component 
@@ -17,6 +17,9 @@ import "@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 import { jsx } from '@emotion/core'
 
 const AddDay = ({ addHealth }) => {
+
+    const toast = useToast();
+
     const { register, handleSubmit, errors, setValue } = useForm();
 
     let history = useHistory();
@@ -32,8 +35,15 @@ const AddDay = ({ addHealth }) => {
 
     const onSubmit = health => {
         // Uses date from date input to determine the week of the year
-        health.week_of_year = moment(health.summary_date).week()
+        health.week_of_year = moment(health.summary_date).week();
         addHealth(health);
+        toast({
+            title: "Added day.",
+            description: "We've added day to your health data.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+        })
         history.push('/data');
     }
 
@@ -137,6 +147,8 @@ const AddDay = ({ addHealth }) => {
                         Submit
                  </Button>
                 </form>
+
+
             </Flex>
         </Box>
 

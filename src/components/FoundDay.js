@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { deleteHealth } from '../actions';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Heading, Stat, StatLabel, StatNumber, Button, Box, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from '@chakra-ui/core';
+import { Heading, Stat, StatLabel, StatNumber, Button, Box, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast } from '@chakra-ui/core';
 import moment from 'moment';
 
 /** @jsx jsx */
@@ -17,9 +17,20 @@ const FoundDay = ({ health, date, deleteHealth }) => {
 
     let history = useHistory();
 
+    const toast = useToast();
+
+
     const handleDelete = () => {
-        deleteHealth(health.id)
-        history.push(`/data`)
+        deleteHealth(health.id);
+        setIsOpen(false);
+        toast({
+            title: "Deleted day.",
+            description: "We deleted your day.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+        });
+        history.push(`/data`);
     }
 
     return (
@@ -72,14 +83,14 @@ const FoundDay = ({ health, date, deleteHealth }) => {
             <Box mt={6}>
                 <Button onClick={() => setIsOpen(true)} variantColor='red' variant='outline'>Delete</Button>
 
-                <Button ml={4} variant="solid">
+                <Button ml={4} variantColor="teal">
                     <Link
                         to={`/day/${date}/edit`}
                         css={{
                             '&:hover':
                             {
                                 textDecoration: 'none',
-                                color: '#1A202C'
+                                color: 'white'
                             }
                         }}
                     >
@@ -106,7 +117,7 @@ const FoundDay = ({ health, date, deleteHealth }) => {
                             <Button ref={cancelRef} onClick={onClose}>
                                 Cancel
                             </Button>
-                            <Button variantColor="red" onClick={onClose} onClick={handleDelete} ml={3}>
+                            <Button variantColor="red" onClick={handleDelete} ml={3}>
                                 Delete
                             </Button>
                         </AlertDialogFooter>
