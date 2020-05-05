@@ -52,13 +52,13 @@ const AddDay = ({ addHealth }) => {
     }, [register])
 
     return (
-        <Box pt='10' px='8'>
+        <Box py={6} px={8}>
 
-            <Heading size='xl'>
+            <Heading size='xl' px={{ sm: '0', md: '0' }}>
                 Add day
             </Heading>
 
-            <Flex>
+            <Flex bg='white' px={6} pb={4} mt={4} shadow='sm' rounded='lg' overflow='hidden'>
                 <form onSubmit={handleSubmit(onSubmit)} css={{
                     maxWidth: '20rem'
                 }}>

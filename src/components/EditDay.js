@@ -71,13 +71,13 @@ const EditDay = () => {
     };
 
     return (
-        <Box pt='10' px='8'>
+        <Box py={8} px={8}>
 
-            <Heading size='xl'>
+            <Heading size='xl' px={{ sm: '6', md: '0' }}>
                 Edit day
             </Heading>
 
-            <Flex>
+            <Flex bg='white' px={6} pb={4} mt={4} shadow='sm' rounded='lg' overflow='hidden'>
                 <form onSubmit={handleSubmit(onSubmit)} css={{
                     maxWidth: '20rem'
                 }}>
@@ -159,6 +159,8 @@ const EditDay = () => {
                             {errors.weight && <>{errors.weight.message}</>}
                         </FormErrorMessage>
                     </FormControl>
+
+
                     <Button
                         mt={6}
                         variantColor="teal"

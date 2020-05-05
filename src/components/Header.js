@@ -14,7 +14,7 @@ const MenuItems = ({ children }) => (
 const StyledLink = styled(NavLink)`
   &.active {
     border-bottom-width: 2px;
-    padding-bottom: 1rem;
+    padding-bottom: 1.9rem;
     border-color: #f44336;
     color: #161e2e
   }
@@ -23,7 +23,7 @@ const StyledLink = styled(NavLink)`
     color: #374151;
     border-color: #d2d6dc;
     border-bottom-width: 2px;
-    padding-bottom: 1rem;
+    padding-bottom: 1.9rem;
 }
 `;
 
@@ -39,12 +39,14 @@ const Header = () => {
             align="center"
             justify="space-between"
             wrap="wrap"
-            pt={6}
+            py={5}
             bg="white"
             color="gray.800"
             maxW="72rem"
             mx="auto"
             px={16}
+            shadow='sm'
+            position='relative'
         >
             <Flex align="center" mr={5}>
                 <Image src={Logo} size="40px" mr={10} alt='HeathKPIs' />

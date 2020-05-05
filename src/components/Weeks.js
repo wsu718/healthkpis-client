@@ -22,6 +22,7 @@ const Table = styled.table`
     }
     & tr {
         border-bottom: 1px solid #dbdbdb;
+        background-color: #ffffff;
         & td {
             padding: 1rem 1.5rem;
             border: 1px solid #dbdbdb;
@@ -48,11 +49,11 @@ const Weeks = () => {
     }, [dispatch]);
 
     return (
-
-
-        <Box pt='10' px={{ sm: '0', md: '8' }}>
-            <Heading size='xl'>Weekly data</Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' borderBottom='1px' borderBottomColor='#e5e7eb' overflow='hidden'>
+        <Box py='6' px={{ sm: '0', md: '8' }}>
+            <Heading size='xl' px={{ sm: '6', md: '0' }}>
+                Weekly data
+            </Heading>
+            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden'>
                 <Table>
                     <thead>
                         <tr>
