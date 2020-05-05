@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Flex, Text, Button, Image } from "@chakra-ui/core";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useAuth0 } from "../react-auth0-spa";
 import Logo from '../assets/shapes-100.png';
 import styled from '@emotion/styled';
@@ -12,11 +12,12 @@ const MenuItems = ({ children }) => (
 );
 
 const StyledLink = styled(NavLink)`
+
   &.active {
-    border-bottom-width: 2px;
     padding-bottom: 1.9rem;
+    border-bottom-width: 2px;
     border-color: #f44336;
-    color: #161e2e
+    color: #161e2e;
   }
   &:hover {
     text-decoration: none;
@@ -25,6 +26,13 @@ const StyledLink = styled(NavLink)`
     border-bottom-width: 2px;
     padding-bottom: 1.9rem;
 }
+
+@media screen and (min-width: 30em) {
+    &.active {
+        border-bottom-width: 0px;
+    }
+}
+
 `;
 
 const Header = () => {
@@ -42,14 +50,14 @@ const Header = () => {
             py={5}
             bg="white"
             color="gray.800"
-            maxW="72rem"
-            mx="auto"
             px={16}
             shadow='sm'
             position='relative'
         >
             <Flex align="center" mr={5}>
-                <Image src={Logo} size="40px" mr={10} alt='HeathKPIs' />
+                <Link as={NavLink} to="/data">
+                    <Image src={Logo} size="40px" mr={10} alt='HeathKPIs' />
+                </Link>
             </Flex>
 
             <Box display={{ sm: "block", md: "none" }} onClick={handleToggle}>

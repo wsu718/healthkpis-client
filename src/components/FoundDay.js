@@ -34,7 +34,7 @@ const FoundDay = ({ health, date, deleteHealth }) => {
     }
 
     return (
-        <Box py={6} px={8}>
+        <Box py={6} px={8} maxW='50rem' mx='auto'>
 
             <Heading size='xl' px={{ sm: '0', md: '0' }}>
                 {date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2 / $3 / $1")}

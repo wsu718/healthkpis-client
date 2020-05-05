@@ -53,7 +53,7 @@ const Weeks = () => {
             <Heading size='xl' px={{ sm: '6', md: '0' }}>
                 Weekly data
             </Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden'>
+            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden' overflowX='auto'>
                 <Table>
                     <thead>
                         <tr>

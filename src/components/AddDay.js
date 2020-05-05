@@ -52,7 +52,7 @@ const AddDay = ({ addHealth }) => {
     }, [register])
 
     return (
-        <Box py={6} px={8}>
+        <Box py={6} px={8} maxW='50rem' mx='auto'>
 
             <Heading size='xl' px={{ sm: '0', md: '0' }}>
                 Add day
