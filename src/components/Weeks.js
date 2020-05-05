@@ -10,23 +10,32 @@ import styled from '@emotion/styled'
 const Table = styled.table`
     min-width: 100%;
     & th {
-        padding: .9rem .9rem .9rem 0;
-        border: 1px solid #dbdbdb;
-        border-width: 0 0 1px;
-        font-weight: bold;
-    }
-    & td {
-        padding: .9rem .9rem .9rem 0;
-        border: 1px solid #dbdbdb;
-        border-width: 0 0 1px;
+        padding: .75rem 1.5rem;
+        border-color: #e5e7eb;
+        border-bottom-width: 1px;
+        font-weight: 500;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-size: .75rem;
+        background-color: #f9fafb;
     }
     & tr {
-        border-bottom: 1px solid #dbdbdb
+        border-bottom: 1px solid #dbdbdb;
+        & td {
+            padding: 1rem 1.5rem;
+            border: 1px solid #dbdbdb;
+            border-width: 0 0 1px;
+            color: #6b7280;
+            line-height: 1.25rem;
+            font-size: .875rem;
+        }
     }
     & a {
-        color: #3273dc;
+        color: #161e2e;
         cursor: pointer;
         text-decoration: none;
+        font-weight: 500;
     }
 `
 
@@ -43,7 +52,7 @@ const Weeks = () => {
 
         <Box pt='10' px={{ sm: '0', md: '8' }}>
             <Heading size='xl'>Weekly data</Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8}>
+            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' borderBottom='1px' borderBottomColor='#e5e7eb' overflow='hidden'>
                 <Table>
                     <thead>
                         <tr>

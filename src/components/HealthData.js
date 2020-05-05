@@ -10,23 +10,45 @@ import styled from '@emotion/styled'
 const Table = styled.table`
     min-width: 100%;
     & th {
-        padding: .9rem .9rem .9rem 0;
-        border: 1px solid #dbdbdb;
-        border-width: 0 0 1px;
-        font-weight: bold;
+        // padding: .9rem .9rem .9rem 0;
+        padding: .75rem 1.5rem;
+        // border: 1px solid #dbdbdb;
+        // border: 1px solid #e5e7eb;
+        border-color: #e5e7eb;
+        border-bottom-width: 1px;
+        font-weight: 500;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-size: .75rem;
+        background-color: #f9fafb;
     }
-    & td {
-        padding: .9rem .9rem .9rem 0;
-        border: 1px solid #dbdbdb;
-        border-width: 0 0 1px;
-    }
+    // & td {
+        
+    // }
     & tr {
-        border-bottom: 1px solid #dbdbdb
+        border-bottom: 1px solid #dbdbdb;
+        // & td:first-of-type {
+        //     background-color: red;
+        // }
+        & td {
+            padding: 1rem 1.5rem;
+            border: 1px solid #dbdbdb;
+            border-width: 0 0 1px;
+            color: #6b7280;
+            line-height: 1.25rem;
+            font-size: .875rem;
+
+            // padding: .9rem .9rem .9rem 0;
+            // border: 1px solid #dbdbdb;
+            // border-width: 0 0 1px;
+        }
     }
     & a {
-        color: #3273dc;
+        color: #161e2e;
         cursor: pointer;
         text-decoration: none;
+        font-weight: 500;
     }
 `
 
@@ -40,7 +62,7 @@ const HealthData = ({ health, getHealth }) => {
     return (
         <Box pt='10' px={{ sm: '0', md: '8' }} fontFamily='body'>
             <Heading size='xl'>Daily data</Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8}>
+            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' borderBottom='1px' borderBottomColor='#e5e7eb' overflow='hidden'>
                 <Table>
                     <thead>
                         <tr>

@@ -17,13 +17,14 @@ const EditDay = () => {
     const dispatch = useDispatch();
     let history = useHistory();
     const { date } = useParams();
-    const healthByDate = useSelector(state => state.healthReducer.healthByDate)
+    const healthByDate = useSelector(state => state.healthReducer.healthByDate);
     const { register, handleSubmit, errors, setValue, reset } = useForm();
     const [durationTime, setDurationTime] = useState();
+    const toast = useToast();
 
     useEffect(() => {
         dispatch(getHealthByDate(date))
-    }, [date, dispatch])
+    }, [date, dispatch]);
 
     useEffect(() => {
         if (healthByDate) {
@@ -42,11 +43,11 @@ const EditDay = () => {
 
             setDurationTime(moment("Sun Dec 31 1899").add(healthByDate?.duration, 's').toDate())
         }
-    }, [healthByDate, reset])
+    }, [healthByDate, reset]);
 
     useEffect(() => {
         register({ name: "duration" })
-    }, [register])
+    }, [register]);
 
     const handleTimePicker = time => {
         // Want time in seconds
@@ -54,16 +55,22 @@ const EditDay = () => {
         setDurationTime(time)
         let duration = moment(time).diff(moment(time).startOf('day'), 'seconds')
         setValue("duration", duration)
-    }
+    };
 
     const onSubmit = healthEdits => {
         healthEdits.week_of_year = moment(healthEdits.summary_date).week()
         dispatch(updateHealth(healthByDate.id, healthEdits))
+        toast({
+            title: "Edited day.",
+            description: "We've edited this day in your health data.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+        })
         history.push('/data');
-    }
+    };
 
     return (
-
         <Box pt='10' px='8'>
 
             <Heading size='xl'>
@@ -160,8 +167,6 @@ const EditDay = () => {
                         Submit
                  </Button>
                 </form>
-
-
             </Flex>
         </Box>
     )
