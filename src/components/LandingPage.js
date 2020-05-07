@@ -8,8 +8,9 @@ const LandingPage = () => {
     const { loginWithRedirect } = useAuth0();
 
     return (
-        <Box>
-            <Flex mx={6} justifyContent='space-between'>
+        <Box bg="white" minH='100vh'
+        >
+            <Flex mx={6} justifyContent='space-between' py={5} bg="white" color="gray.800" px={16}>
                 <Image src={Logo} size="40px" alt='HeathKPIs' />
                 <Button onClick={() => loginWithRedirect({})}>Log in</Button>
             </Flex>
@@ -21,7 +22,7 @@ const LandingPage = () => {
                     <Box as="span" color='gray.700'>through data</Box>
                 </Heading>
 
-                <Text color='gray.500' fontSize='1.25rem' pt={8}>
+                <Text color='gray.500' fontSize='1.25rem' pt={8} textAlign='center' mx={20}>
                     Track your most important health data every day. Create weekly experiments and compare the results.
                 </Text>
 
