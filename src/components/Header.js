@@ -27,7 +27,7 @@ const StyledLink = styled(NavLink)`
     padding-bottom: 1.9rem;
 }
 
-@media screen and (min-width: 30em) {
+@media screen and (min-width: 20em) {
     &.active {
         border-bottom-width: 0px;
     }
