@@ -10,19 +10,19 @@ const LandingPage = () => {
     return (
         <Box bg="white" minH='100vh'
         >
-            <Flex mx={6} justifyContent='space-between' py={5} bg="white" color="gray.800" px={16}>
+            <Flex justifyContent='space-between' py={5} bg="white" color="gray.800" mx={{ xs: 8, md: 40 }}>
                 <Image src={Logo} size="40px" alt='HeathKPIs' />
                 <Button onClick={() => loginWithRedirect({})}>Log in</Button>
             </Flex>
 
-            <Flex direction='column' alignItems='center' mt={10}>
+            <Flex direction='column' alignItems='center' mt={10} mx={{ xs: 8, md: 40 }}>
                 <Heading fontSize='4rem' letterSpacing='-.025em' color='#5850ec' textAlign='center'>
                     Improve your health
                   <br />
                     <Box as="span" color='gray.700'>through data</Box>
                 </Heading>
 
-                <Text color='gray.500' fontSize='1.25rem' pt={8} textAlign='center' mx={20}>
+                <Text color='gray.500' fontSize='1.25rem' mt={8} textAlign='center' >
                     Track your most important health data every day. Create weekly experiments and compare the results.
                 </Text>
 
