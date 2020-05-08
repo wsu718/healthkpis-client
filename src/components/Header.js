@@ -60,15 +60,15 @@ const Header = () => {
                 </Link>
             </Flex>
 
-            <Box display={{ sm: "block", md: "none" }} onClick={handleToggle}>
+            <Box display={{ xs: "block", md: "none" }} onClick={handleToggle}>
                 <Text fontSize="lg">
                     Menu
                 </Text>
             </Box>
 
             <Flex
-                display={{ sm: show ? "block" : "none", md: "flex" }}
-                width={{ sm: "full", md: "auto" }}
+                display={{ xs: show ? "block" : "none", md: "flex" }}
+                width={{ xs: "full", md: "auto" }}
                 alignItems="center"
                 flexGrow={1}
                 color="gray.500"
@@ -97,7 +97,7 @@ const Header = () => {
             </Flex>
 
             <Box
-                display={{ sm: show ? "block" : "none", md: "block" }}
+                display={{ xs: show ? "block" : "none", md: "block" }}
                 mt={{ base: 4, md: 0 }}
             >
                 <Button bg="gray.100" onClick={() => logout()}>Log out        </Button>
