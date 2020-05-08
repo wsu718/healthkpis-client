@@ -49,11 +49,11 @@ const Weeks = () => {
     }, [dispatch]);
 
     return (
-        <Box py='6' px={{ sm: '0', md: '8' }}>
-            <Heading size='xl' px={{ sm: '6', md: '0' }}>
+        <Box py='6' px={{ xs: '0', md: '8' }}>
+            <Heading size='xl' px={{ xs: '6', md: '0' }}>
                 Weekly data
             </Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden' overflowX='auto'>
+            <Box fontSize={{ xs: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden' overflowX='auto'>
                 <Table>
                     <thead>
                         <tr>

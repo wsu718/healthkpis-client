@@ -73,7 +73,7 @@ const EditDay = () => {
     return (
         <Box py={8} px={8} maxW='50rem' mx='auto'>
 
-            <Heading size='xl' px={{ sm: '6', md: '0' }}>
+            <Heading size='xl' px={{ xs: '6', md: '0' }}>
                 Edit day
             </Heading>
 

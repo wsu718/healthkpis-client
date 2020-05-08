@@ -48,9 +48,9 @@ const HealthData = ({ health, getHealth }) => {
     }, [getHealth]);
 
     return (
-        <Box pt={6} px={{ sm: '0', md: '8' }} fontFamily='body'>
-            <Heading size='xl' px={{ sm: '6', md: '0' }}>Daily data</Heading>
-            <Box fontSize={{ sm: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden' overflowX='auto'>
+        <Box pt={6} px={{ xs: '0', md: '8' }} fontFamily='body'>
+            <Heading size='xl' px={{ xs: '6', md: '0' }}>Daily data</Heading>
+            <Box fontSize={{ xs: '.6rem', md: 'lg' }} textAlign='left' mt={8} shadow='sm' rounded='lg' overflow='hidden' overflowX='auto'>
                 <Table>
                     <thead>
                         <tr>

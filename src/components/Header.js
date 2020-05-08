@@ -6,7 +6,7 @@ import Logo from '../assets/shapes-100.png';
 import styled from '@emotion/styled';
 
 const MenuItems = ({ children }) => (
-    <Text mt={{ base: 4, md: 0 }} mr={12} fontSize={{ sm: "xl", md: "md" }} display="block" >
+    <Text mt={{ base: 4, md: 0 }} mr={12} fontSize={{ xs: "xl", md: "md" }} display="block" >
         {children}
     </Text>
 );
