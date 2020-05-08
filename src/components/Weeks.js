@@ -71,14 +71,14 @@ const Weeks = () => {
                         {weeks.map((week, index) => (
                             <tr key={index}>
                                 <td>{week.week_of_year}</td>
-                                <td>{week.avg_score_total}</td>
+                                <td>{Math.round(week.avg_score_total)}</td>
 
                                 <td>{moment.duration(week.avg_duration * 1000).hours()}h {moment.duration(week.avg_duration * 1000).minutes()}m</td>
 
-                                <td>{week.avg_readiness}</td>
-                                <td>{week.avg_hrv}</td>
-                                <td>{week.avg_rhr}</td>
-                                <td>{week.avg_weight}</td>
+                                <td>{Math.round(week.avg_readiness)}</td>
+                                <td>{Math.round(week.avg_hrv)}</td>
+                                <td>{Math.round(week.avg_rhr)}</td>
+                                <td>{Math.round(week.avg_weight)}</td>
                             </tr>
                         ))}
 
