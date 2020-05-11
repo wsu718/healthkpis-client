@@ -40,8 +40,10 @@ const Table = styled.table`
     }
 `
 
-
 const HealthData = ({ health, getHealth }) => {
+
+    console.log(new moment(health[0]?.summary_date)?.format('YYYYMMDD'))
+    // console.log(health[0]?.summary_date)
 
     useEffect(() => {
         getHealth();
@@ -65,8 +67,8 @@ const HealthData = ({ health, getHealth }) => {
                         </tr>
                     </thead>
                     <tbody>
-
-                        {health.map((day, index) => (
+                        {/* Sort by date */}
+                        {health.sort((a, b) => new moment(b.summary_date).format('YYYYMMDD') - new moment(a.summary_date).format('YYYYMMDD')).map((day, index) => (
                             <tr key={index}>
                                 <td><Link to={`/day/${day.summary_date}`}>{day.summary_date.replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$2-$3-$1")}</Link></td>
                                 <td>{day.score_total}</td>
