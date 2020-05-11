@@ -42,9 +42,6 @@ const Table = styled.table`
 
 const HealthData = ({ health, getHealth }) => {
 
-    console.log(new moment(health[0]?.summary_date)?.format('YYYYMMDD'))
-    // console.log(health[0]?.summary_date)
-
     useEffect(() => {
         getHealth();
     }, [getHealth]);

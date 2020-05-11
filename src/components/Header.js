@@ -98,7 +98,7 @@ const Header = () => {
                 display={{ xs: show ? "block" : "none", md: "block" }}
                 mt={{ base: 4, md: 0 }}
             >
-                <Button bg="gray.100" onClick={() => logout()}>Log out        </Button>
+                <Button bg="gray.100" onClick={() => logout({ returnTo: 'https://www.healthkpis.com' })}>Log out        </Button>
             </Box>
         </Flex >
     );
