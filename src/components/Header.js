@@ -12,7 +12,6 @@ const MenuItems = ({ children }) => (
 );
 
 const StyledLink = styled(NavLink)`
-
   &.active {
     padding-bottom: 1.9rem;
     border-bottom-width: 2px;
@@ -27,12 +26,11 @@ const StyledLink = styled(NavLink)`
     padding-bottom: 1.9rem;
 }
 
-@media screen and (min-width: 20em) {
+@media screen and (max-width: 48em) {
     &.active {
         border-bottom-width: 0px;
     }
 }
-
 `;
 
 const Header = () => {
