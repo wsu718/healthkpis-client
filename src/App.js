@@ -23,14 +23,13 @@ function App() {
 
   const { isAuthenticated, loading } = useAuth0();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <ThemeProvider theme={customTheme}>
       <CSSReset />
-      {/* <div className='App'> */}
       <Router history={history}>
         {isAuthenticated && (
           <Header />
@@ -74,7 +73,6 @@ function App() {
 
         </Box>
       </Router>
-      {/* </div> */}
     </ThemeProvider>
 
   );

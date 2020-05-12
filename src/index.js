@@ -15,7 +15,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { rootReducer } from './reducers/index';
 import { Provider } from 'react-redux';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 // auth0 code
 
@@ -29,7 +29,19 @@ const onRedirectCallback = appState => {
 
 const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)));
+let middlewares = [thunk];
+
+if (process.env.REACT_APP_NODE_ENV === `development`) {
+    const { logger } = require(`redux-logger`)
+    middlewares.push(logger)
+    console.log('dev')
+}
+
+console.log(`${process.env.REACT_APP_NODE_ENV}`)
+
+const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
+
+// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
 
 
 ReactDOM.render(
