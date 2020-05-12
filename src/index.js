@@ -35,8 +35,6 @@ if (process.env.REACT_APP_NODE_ENV === `development`) {
     console.log('dev')
 }
 
-console.log(`${process.env.REACT_APP_NODE_ENV}`)
-
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
 
 ReactDOM.render(
