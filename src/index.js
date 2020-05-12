@@ -27,8 +27,6 @@ const onRedirectCallback = appState => {
     );
 };
 
-const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
-
 let middlewares = [thunk];
 
 if (process.env.REACT_APP_NODE_ENV === `development`) {
@@ -40,9 +38,6 @@ if (process.env.REACT_APP_NODE_ENV === `development`) {
 console.log(`${process.env.REACT_APP_NODE_ENV}`)
 
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
-
-// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
-
 
 ReactDOM.render(
     <Provider store={store}>
