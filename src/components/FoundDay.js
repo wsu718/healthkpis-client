@@ -6,8 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { Heading, Stat, StatLabel, StatNumber, Button, Box, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, useToast, Flex } from '@chakra-ui/core';
 import moment from 'moment';
 
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
+// import { jsx } from '@emotion/core'
 
 const FoundDay = ({ health, date, deleteHealth }) => {
 

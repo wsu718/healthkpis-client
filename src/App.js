@@ -21,7 +21,7 @@ import './App.css';
 
 function App() {
 
-  const { isAuthenticated, loading } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   // if (loading) {
   //   return <div>Loading...</div>;

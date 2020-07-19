@@ -13,8 +13,7 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/datetime/lib/css/blueprint-datetime.css";
 
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
+// import { jsx } from '@emotion/core'
 
 const AddDay = ({ addHealth }) => {
 

@@ -32,7 +32,7 @@ let middlewares = [thunk];
 if (process.env.REACT_APP_NODE_ENV === `development`) {
     const { logger } = require(`redux-logger`)
     middlewares.push(logger)
-    console.log('dev')
+    // console.log('dev')
 }
 
 const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);
